@@ -496,7 +496,7 @@
         </div>
     </div>
 
-    <!-- Modal: รหัสผ่านเข้าหลังบ้าน Admin -->
+    <!-- Modal: รหัสผ่านเข้าหลังบ้าน Admin (ปลอดภัย ปล่อยว่างเพื่อไม่เผยแพร่ข้อมูลส่วนตัว) -->
     <div id="modal-admin-auth" class="modal inactive fixed inset-0 z-50 flex items-center justify-center p-4">
         <div class="absolute inset-0 bg-pj-blue-dark/50 backdrop-blur-sm" onclick="closeModal('modal-admin-auth')"></div>
         <div class="modal-content relative bg-pj-white w-full max-w-xs rounded-[24px] p-6 shadow-xl border-4 border-pj-blue-dark text-center">
@@ -505,11 +505,11 @@
             <div class="space-y-2 mb-3 text-left">
                 <div>
                     <label class="block text-[10px] font-bold text-pj-blue-dark mb-0.5">อีเมลแอดมิน</label>
-                    <input type="email" id="admin-email-input" value="mean13ayu@gmail.com" placeholder="อีเมลล็อกอิน" class="w-full border-2 border-pj-pink/40 rounded-xl px-3 py-1.5 text-xs focus:outline-none focus:border-pj-blue-dark">
+                    <input type="email" id="admin-email-input" value="" placeholder="กรอกอีเมลแอดมิน" class="w-full border-2 border-pj-pink/40 rounded-xl px-3 py-1.5 text-xs focus:outline-none focus:border-pj-blue-dark">
                 </div>
                 <div>
                     <label class="block text-[10px] font-bold text-pj-blue-dark mb-0.5">รหัสผ่าน</label>
-                    <input type="password" id="admin-pass-input" placeholder="รหัสผ่าน (เริ่มต้น 1234)" class="w-full border-2 border-pj-pink/40 rounded-xl px-3 py-1.5 text-xs focus:outline-none focus:border-pj-blue-dark">
+                    <input type="password" id="admin-pass-input" value="" placeholder="กรอกรหัสผ่าน" class="w-full border-2 border-pj-pink/40 rounded-xl px-3 py-1.5 text-xs focus:outline-none focus:border-pj-blue-dark">
                 </div>
             </div>
             <button onclick="checkAdminLogin()" class="w-full bg-pj-blue-dark text-white font-bold py-2 rounded-xl text-xs hover:bg-pj-blue-main transition shadow-md">
@@ -639,7 +639,7 @@
         const ADMIN_EMAIL = 'mean13ayu@gmail.com';
         let currentAdminPass = '1234';
 
-        // โหลดรหัสผ่านจากความจำเครื่อง (ถ้ามี)
+        // โหลดรหัสผ่านจากความจำเครื่อง (ถ้าเคยเปลี่ยน)
         if (localStorage.getItem('pj_admin_pass')) {
             currentAdminPass = localStorage.getItem('pj_admin_pass');
         }
@@ -713,7 +713,7 @@
         function openReviewModal() { openModal('modal-review-form'); }
         function openAdminAuthModal() { openModal('modal-admin-auth'); }
 
-        /* ฟังก์ชันเช็กล็อกอินแอดมินแบบยืดหยุ่นและการันตีเข้าได้ */
+        /* ฟังก์ชันเช็กล็อกอินแอดมิน */
         function checkAdminLogin() {
             const emailInput = document.getElementById('admin-email-input');
             const passInput = document.getElementById('admin-pass-input');
@@ -721,14 +721,13 @@
             const email = emailInput ? emailInput.value.trim().toLowerCase() : '';
             const pass = passInput ? passInput.value.trim() : '';
 
-            // ตรวจสอบว่าตรงกับอีเมล และ รหัสผ่าน (1234 หรือที่ตั้งใหม่)
-            if ((email === ADMIN_EMAIL.toLowerCase() || email === '') && (pass === currentAdminPass || pass === '1234')) {
+            if (email === ADMIN_EMAIL.toLowerCase() && pass === currentAdminPass) {
                 closeModal('modal-admin-auth');
                 if(passInput) passInput.value = '';
                 loadAdminData();
                 openModal('modal-admin-panel');
             } else {
-                alert('อีเมลหรือรหัสผ่านไม่ถูกต้องค่ะ\n(กรุณาใช้รหัสผ่าน: 1234)');
+                alert('อีเมลหรือรหัสผ่านไม่ถูกต้องค่ะ');
             }
         }
 
