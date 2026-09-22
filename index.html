@@ -186,7 +186,7 @@
                         </div>
                         <div class="text-left">
                             <h3 class="font-eng text-lg font-bold text-pj-blue-dark leading-tight">Check Order Queue</h3>
-                            <p class="text-xs text-pj-blue-dark/70 font-medium">กดที่นี่เพื่อเช็คสถานะและคิวงานของคุณ ✨</p>
+                            <p class="text-xs text-pj-blue-dark/70 font-medium">กดที่นี่เพื่อเช็คสถานะและคิวงานของคุณ</p>
                         </div>
                     </div>
                     <div class="bg-pj-blue-dark text-pj-white p-2 rounded-full shadow-sm">
@@ -208,8 +208,8 @@
                     <div class="w-full aspect-square rounded-xl overflow-hidden bg-pj-pink/20 mb-2 border border-pj-pink/30">
                         <img id="prod-img-1" src="https://placehold.co/1280x1280/ffb3c6/ffffff?text=Block" alt="Block" class="w-full h-full object-cover">
                     </div>
-                    <span class="w-full bg-pj-pink text-pj-white text-center py-1.5 rounded-xl text-[10px] font-bold px-1 overflow-hidden text-ellipsis whitespace-nowrap">
-                        ˚₊‧꒰ა 𝘽𝙡𝙤𝙘𝙠 ໒꒱ ‧₊˚
+                    <span class="w-full bg-pj-pink text-pj-white text-center py-1.5 rounded-xl text-xs font-bold font-eng">
+                        Block
                     </span>
                 </a>
 
@@ -218,8 +218,8 @@
                     <div class="w-full aspect-square rounded-xl overflow-hidden bg-pj-yellow-light/50 mb-2 border border-pj-yellow-main/30">
                         <img id="prod-img-2" src="https://placehold.co/1280x1280/ffe066/705446?text=Toon" alt="Toon" class="w-full h-full object-cover">
                     </div>
-                    <span class="w-full bg-pj-yellow-main text-pj-blue-dark text-center py-1.5 rounded-xl text-[10px] font-bold px-1 overflow-hidden text-ellipsis whitespace-nowrap">
-                        ˚₊‧꒰ა 𝙏𝙤𝙤𝙣 ໒꒱ ‧₊˚
+                    <span class="w-full bg-pj-yellow-main text-pj-blue-dark text-center py-1.5 rounded-xl text-xs font-bold font-eng">
+                        Toon
                     </span>
                 </a>
 
@@ -228,8 +228,8 @@
                     <div class="w-full aspect-square rounded-xl overflow-hidden bg-pj-blue-light/30 mb-2 border border-pj-blue-light/30">
                         <img id="prod-img-3" src="https://placehold.co/1280x1280/ffccd5/705446?text=Descor" alt="Descor" class="w-full h-full object-cover">
                     </div>
-                    <span class="w-full bg-pj-blue-light text-pj-blue-dark text-center py-1.5 rounded-xl text-[10px] font-bold px-1 overflow-hidden text-ellipsis whitespace-nowrap">
-                        ˚₊‧꒰ა 𝘿𝙚𝙨𝙘𝙤𝙧 ໒꒱ ‧₊˚
+                    <span class="w-full bg-pj-blue-light text-pj-blue-dark text-center py-1.5 rounded-xl text-xs font-bold font-eng">
+                        Descor
                     </span>
                 </a>
             </div>
@@ -475,7 +475,7 @@
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
             </button>
             <h3 class="font-eng text-xl font-bold text-pj-pink mb-1">Add Review</h3>
-            <p class="text-xs text-pj-blue-dark/70 mb-4">เขียนรีวิวความประทับใจบริการของเรา ✨</p>
+            <p class="text-xs text-pj-blue-dark/70 mb-4">เขียนรีวิวความประทับใจบริการของเรา</p>
             
             <form onsubmit="handleReviewSubmit(event)" class="space-y-3">
                 <div>
@@ -549,62 +549,48 @@
                     </button>
                 </div>
 
-                <!-- อัปโหลดรูปภาพโดยตรงพร้อมปุ่มบันทึก -->
+                <!-- ส่วนอัปโหลดรูปภาพทั้งหมด มีปุ่มบันทึกรวมปุ่มเดียวด้านล่างสุด -->
                 <div class="bg-pj-bg p-4 rounded-2xl border border-pj-pink/40">
                     <h3 class="font-bold text-sm text-pj-blue-dark mb-3 flex items-center gap-1.5">
                         <svg class="w-4 h-4 text-pj-blue-main" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
-                        เปลี่ยนรูปภาพโลโก้ / แบนเนอร์ / สินค้า
+                        จัดการรูปภาพทั้งหมด
                     </h3>
-                    <div class="space-y-4 text-xs">
-                        <div class="bg-white p-2.5 rounded-xl border border-pj-pink/30 space-y-1.5">
-                            <label class="block font-bold text-pj-blue-dark">รูปโลโก้ (โพลารอยด์):</label>
-                            <div class="flex gap-2 items-center">
-                                <input type="file" id="file-input-logo" accept="image/*" class="w-full text-xs text-gray-500 file:mr-2 file:py-1 file:px-3 file:rounded-full file:border-0 file:text-xs file:font-semibold file:bg-pj-pink/20 file:text-pj-blue-dark hover:file:bg-pj-pink">
-                                <button onclick="saveImageSection('logo')" class="bg-pj-pink text-pj-white font-bold px-3 py-1 rounded-xl shrink-0 hover:bg-pj-blue-main transition shadow-sm">
-                                    💾 บันทึก
-                                </button>
-                            </div>
+                    <div class="space-y-3 text-xs">
+                        <div class="bg-white p-3 rounded-xl border border-pj-pink/30 space-y-1.5">
+                            <label class="block font-bold text-pj-blue-dark">1. รูปโลโก้ (โพลารอยด์):</label>
+                            <input type="file" id="file-input-logo" accept="image/*" onchange="previewImage(event, 'preview-logo')" class="w-full text-xs text-gray-500 file:mr-2 file:py-1 file:px-3 file:rounded-full file:border-0 file:text-xs file:font-semibold file:bg-pj-pink/20 file:text-pj-blue-dark hover:file:bg-pj-pink">
+                            <img id="preview-logo" class="w-16 h-16 object-cover rounded-lg border hidden mt-1">
                         </div>
 
-                        <div class="bg-white p-2.5 rounded-xl border border-pj-pink/30 space-y-1.5">
-                            <label class="block font-bold text-pj-blue-dark">รูปแบนเนอร์ (2400x800):</label>
-                            <div class="flex gap-2 items-center">
-                                <input type="file" id="file-input-banner" accept="image/*" class="w-full text-xs text-gray-500 file:mr-2 file:py-1 file:px-3 file:rounded-full file:border-0 file:text-xs file:font-semibold file:bg-pj-pink/20 file:text-pj-blue-dark hover:file:bg-pj-pink">
-                                <button onclick="saveImageSection('banner')" class="bg-pj-pink text-pj-white font-bold px-3 py-1 rounded-xl shrink-0 hover:bg-pj-blue-main transition shadow-sm">
-                                    💾 บันทึก
-                                </button>
-                            </div>
+                        <div class="bg-white p-3 rounded-xl border border-pj-pink/30 space-y-1.5">
+                            <label class="block font-bold text-pj-blue-dark">2. รูปแบนเนอร์ (2400x800):</label>
+                            <input type="file" id="file-input-banner" accept="image/*" onchange="previewImage(event, 'preview-banner')" class="w-full text-xs text-gray-500 file:mr-2 file:py-1 file:px-3 file:rounded-full file:border-0 file:text-xs file:font-semibold file:bg-pj-pink/20 file:text-pj-blue-dark hover:file:bg-pj-pink">
+                            <img id="preview-banner" class="w-32 h-12 object-cover rounded-lg border hidden mt-1">
                         </div>
 
-                        <div class="bg-white p-2.5 rounded-xl border border-pj-pink/30 space-y-1.5">
-                            <label class="block font-bold text-pj-blue-dark">รูปสินค้า 1 (Block):</label>
-                            <div class="flex gap-2 items-center">
-                                <input type="file" id="file-input-prod1" accept="image/*" class="w-full text-xs text-gray-500 file:mr-2 file:py-1 file:px-3 file:rounded-full file:border-0 file:text-xs file:font-semibold file:bg-pj-pink/20 file:text-pj-blue-dark hover:file:bg-pj-pink">
-                                <button onclick="saveImageSection('prod1')" class="bg-pj-pink text-pj-white font-bold px-3 py-1 rounded-xl shrink-0 hover:bg-pj-blue-main transition shadow-sm">
-                                    💾 บันทึก
-                                </button>
-                            </div>
+                        <div class="bg-white p-3 rounded-xl border border-pj-pink/30 space-y-1.5">
+                            <label class="block font-bold text-pj-blue-dark">3. รูปสินค้า 1 (Block):</label>
+                            <input type="file" id="file-input-prod1" accept="image/*" onchange="previewImage(event, 'preview-prod1')" class="w-full text-xs text-gray-500 file:mr-2 file:py-1 file:px-3 file:rounded-full file:border-0 file:text-xs file:font-semibold file:bg-pj-pink/20 file:text-pj-blue-dark hover:file:bg-pj-pink">
+                            <img id="preview-prod1" class="w-16 h-16 object-cover rounded-lg border hidden mt-1">
                         </div>
 
-                        <div class="bg-white p-2.5 rounded-xl border border-pj-pink/30 space-y-1.5">
-                            <label class="block font-bold text-pj-blue-dark">รูปสินค้า 2 (Toon):</label>
-                            <div class="flex gap-2 items-center">
-                                <input type="file" id="file-input-prod2" accept="image/*" class="w-full text-xs text-gray-500 file:mr-2 file:py-1 file:px-3 file:rounded-full file:border-0 file:text-xs file:font-semibold file:bg-pj-pink/20 file:text-pj-blue-dark hover:file:bg-pj-pink">
-                                <button onclick="saveImageSection('prod2')" class="bg-pj-pink text-pj-white font-bold px-3 py-1 rounded-xl shrink-0 hover:bg-pj-blue-main transition shadow-sm">
-                                    💾 บันทึก
-                                </button>
-                            </div>
+                        <div class="bg-white p-3 rounded-xl border border-pj-pink/30 space-y-1.5">
+                            <label class="block font-bold text-pj-blue-dark">4. รูปสินค้า 2 (Toon):</label>
+                            <input type="file" id="file-input-prod2" accept="image/*" onchange="previewImage(event, 'preview-prod2')" class="w-full text-xs text-gray-500 file:mr-2 file:py-1 file:px-3 file:rounded-full file:border-0 file:text-xs file:font-semibold file:bg-pj-pink/20 file:text-pj-blue-dark hover:file:bg-pj-pink">
+                            <img id="preview-prod2" class="w-16 h-16 object-cover rounded-lg border hidden mt-1">
                         </div>
 
-                        <div class="bg-white p-2.5 rounded-xl border border-pj-pink/30 space-y-1.5">
-                            <label class="block font-bold text-pj-blue-dark">รูปสินค้า 3 (Descor):</label>
-                            <div class="flex gap-2 items-center">
-                                <input type="file" id="file-input-prod3" accept="image/*" class="w-full text-xs text-gray-500 file:mr-2 file:py-1 file:px-3 file:rounded-full file:border-0 file:text-xs file:font-semibold file:bg-pj-pink/20 file:text-pj-blue-dark hover:file:bg-pj-pink">
-                                <button onclick="saveImageSection('prod3')" class="bg-pj-pink text-pj-white font-bold px-3 py-1 rounded-xl shrink-0 hover:bg-pj-blue-main transition shadow-sm">
-                                    💾 บันทึก
-                                </button>
-                            </div>
+                        <div class="bg-white p-3 rounded-xl border border-pj-pink/30 space-y-1.5">
+                            <label class="block font-bold text-pj-blue-dark">5. รูปสินค้า 3 (Descor):</label>
+                            <input type="file" id="file-input-prod3" accept="image/*" onchange="previewImage(event, 'preview-prod3')" class="w-full text-xs text-gray-500 file:mr-2 file:py-1 file:px-3 file:rounded-full file:border-0 file:text-xs file:font-semibold file:bg-pj-pink/20 file:text-pj-blue-dark hover:file:bg-pj-pink">
+                            <img id="preview-prod3" class="w-16 h-16 object-cover rounded-lg border hidden mt-1">
                         </div>
+
+                        <!-- ปุ่มบันทึกรูปภาพเพียงปุ่มเดียว นำมาไว้ใต้รูปสินค้ารูปที่ 3 -->
+                        <button onclick="saveAllImageChanges()" class="w-full bg-pj-pink text-pj-white font-bold py-2.5 rounded-xl text-xs hover:bg-pj-blue-main transition shadow-md mt-3 flex items-center justify-center gap-1">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path d="M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3 3m0 0l-3-3m3 3V4"/></svg>
+                            <span>บันทึกการเปลี่ยนรูปภาพทั้งหมด</span>
+                        </button>
                     </div>
                 </div>
 
@@ -699,32 +685,63 @@
             if(siteData.products[2]) document.getElementById('prod-img-3').src = siteData.products[2].img;
         }
 
-        /* ฟังก์ชันบันทึกรูปภาพตามปุ่มกดในแต่ละส่วน */
-        function saveImageSection(targetType) {
-            const fileInput = document.getElementById(`file-input-${targetType}`);
-            const file = fileInput ? fileInput.files[0] : null;
+        /* ฟังก์ชันสำหรับพรีวิวรูปภาพก่อนบันทึก */
+        function previewImage(event, previewElemId) {
+            const file = event.target.files[0];
+            const imgElem = document.getElementById(previewElemId);
+            if (file && imgElem) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    imgElem.src = e.target.result;
+                    imgElem.classList.remove('hidden');
+                };
+                reader.readAsDataURL(file);
+            }
+        }
 
-            if (!file) {
-                alert('กรุณาเลือกไฟล์รูปภาพก่อนกดบันทึกนะคะ');
+        /* ฟังก์ชันบันทึกรูปภาพทั้งหมดในปุ่มเดียว */
+        function saveAllImageChanges() {
+            const logoFile = document.getElementById('file-input-logo').files[0];
+            const bannerFile = document.getElementById('file-input-banner').files[0];
+            const prod1File = document.getElementById('file-input-prod1').files[0];
+            const prod2File = document.getElementById('file-input-prod2').files[0];
+            const prod3File = document.getElementById('file-input-prod3').files[0];
+
+            if (!logoFile && !bannerFile && !prod1File && !prod2File && !prod3File) {
+                alert('กรุณาเลือกรูปภาพอย่างน้อย 1 รายการก่อนกดบันทึกนะคะ');
                 return;
             }
 
-            const reader = new FileReader();
-            reader.onload = function(e) {
-                const base64Image = e.target.result;
+            let pendingCount = 0;
+            let totalCount = 0;
 
-                if (targetType === 'logo') siteData.logoUrl = base64Image;
-                else if (targetType === 'banner') siteData.bannerUrl = base64Image;
-                else if (targetType === 'prod1') siteData.products[0].img = base64Image;
-                else if (targetType === 'prod2') siteData.products[1].img = base64Image;
-                else if (targetType === 'prod3') siteData.products[2].img = base64Image;
-
-                localStorage.setItem('pj_site_data', JSON.stringify(siteData));
-                renderSiteElements();
-                alert('บันทึกรูปภาพเรียบร้อยแล้วค่ะ! ✨');
-                fileInput.value = '';
+            const checkDone = () => {
+                pendingCount--;
+                if (pendingCount === 0) {
+                    localStorage.setItem('pj_site_data', JSON.stringify(siteData));
+                    renderSiteElements();
+                    alert('บันทึกรูปภาพเรียบร้อยแล้วค่ะ');
+                }
             };
-            reader.readAsDataURL(file);
+
+            const processFile = (file, callback) => {
+                if (file) {
+                    totalCount++;
+                    pendingCount++;
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        callback(e.target.result);
+                        checkDone();
+                    };
+                    reader.readAsDataURL(file);
+                }
+            };
+
+            processFile(logoFile, (res) => siteData.logoUrl = res);
+            processFile(bannerFile, (res) => siteData.bannerUrl = res);
+            processFile(prod1File, (res) => siteData.products[0].img = res);
+            processFile(prod2File, (res) => siteData.products[1].img = res);
+            processFile(prod3File, (res) => siteData.products[2].img = res);
         }
 
         function getStatusText(status) {
@@ -849,7 +866,7 @@
             reviews.push(newReview);
             localStorage.setItem('pj_reviews', JSON.stringify(reviews));
 
-            alert('ส่งรีวิวเรียบร้อยแล้วค่ะ! กรุณารอแอดมินอนุมัตินะคะ ✨');
+            alert('ส่งรีวิวเรียบร้อยแล้ว กรุณารอแอดมินอนุมัตินะคะ');
             closeModal('modal-review-form');
             e.target.reset();
             tempUploadedImage = '';
@@ -1054,7 +1071,7 @@
                 localStorage.setItem('pj_reviews', JSON.stringify(reviews));
                 renderAdminPendingReviews();
                 renderReviews();
-                alert('อนุมัติรีวิวเรียบร้อยแล้วค่ะ!');
+                alert('อนุมัติรีวิวเรียบร้อยแล้วค่ะ');
             }
         }
 
