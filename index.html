@@ -496,7 +496,7 @@
         </div>
     </div>
 
-    <!-- Modal: รหัสผ่านเข้าหลังบ้าน Admin (ปลอดภัย ปล่อยว่างเพื่อไม่เผยแพร่ข้อมูลส่วนตัว) -->
+    <!-- Modal: รหัสผ่านเข้าหลังบ้าน Admin -->
     <div id="modal-admin-auth" class="modal inactive fixed inset-0 z-50 flex items-center justify-center p-4">
         <div class="absolute inset-0 bg-pj-blue-dark/50 backdrop-blur-sm" onclick="closeModal('modal-admin-auth')"></div>
         <div class="modal-content relative bg-pj-white w-full max-w-xs rounded-[24px] p-6 shadow-xl border-4 border-pj-blue-dark text-center">
@@ -530,14 +530,14 @@
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
                 ระบบจัดการหลังบ้าน
             </h2>
-            <p class="text-xs text-gray-500 mb-6">จัดการภาพ คิวงาน รีวิว และเปลี่ยนรหัสผ่านได้ที่นี่</p>
+            <p class="text-xs text-gray-500 mb-6">เลือกรูปจากอัลบั้มโทรศัพท์ ระบบจะอัปโหลดขึ้น Cloud อัตโนมัติ</p>
 
             <div class="space-y-6">
-                <!-- 1. ส่วนอัปโหลดรูปภาพทั้งหมด มีปุ่มบันทึกรวมปุ่มเดียวด้านล่างสุด -->
+                <!-- 1. ส่วนเลือกอัปโหลดรูปภาพจากอัลบั้ม -->
                 <div class="bg-pj-bg p-4 rounded-2xl border border-pj-pink/40">
                     <h3 class="font-bold text-sm text-pj-blue-dark mb-3 flex items-center gap-1.5">
                         <svg class="w-4 h-4 text-pj-blue-main" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
-                        จัดการรูปภาพทั้งหมด
+                        เลือกรูปภาพจากอัลบั้มโทรศัพท์
                     </h3>
                     <div class="space-y-3 text-xs">
                         <div class="bg-white p-3 rounded-xl border border-pj-pink/30 space-y-1.5">
@@ -570,10 +570,9 @@
                             <img id="preview-prod3" class="w-16 h-16 object-cover rounded-lg border hidden mt-1">
                         </div>
 
-                        <!-- ปุ่มบันทึกรูปภาพเพียงปุ่มเดียว นำมาไว้ใต้รูปสินค้ารูปที่ 3 -->
-                        <button onclick="saveAllImageChanges()" class="w-full bg-pj-pink text-pj-white font-bold py-2.5 rounded-xl text-xs hover:bg-pj-blue-main transition shadow-md mt-3 flex items-center justify-center gap-1">
+                        <button id="btn-save-images" onclick="saveAllImageChanges()" class="w-full bg-pj-pink text-pj-white font-bold py-2.5 rounded-xl text-xs hover:bg-pj-blue-main transition shadow-md mt-3 flex items-center justify-center gap-1">
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path d="M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3 3m0 0l-3-3m3 3V4"/></svg>
-                            <span>บันทึกการเปลี่ยนรูปภาพทั้งหมด</span>
+                            <span id="btn-save-text">อัปโหลดและบันทึกรูปภาพขึ้น Cloud</span>
                         </button>
                     </div>
                 </div>
@@ -653,7 +652,7 @@
                     </div>
                 </div>
 
-                <!-- 4. ตั้งค่าเปลี่ยนรหัสผ่านแอดมิน (อยู่ข้างล่างสุดของหน้าต่างระบบแอดมิน) -->
+                <!-- 4. ตั้งค่าเปลี่ยนรหัสผ่านแอดมิน -->
                 <div class="bg-pj-yellow-light/40 p-4 rounded-2xl border border-pj-yellow-main">
                     <h3 class="font-bold text-sm text-pj-blue-dark mb-2 flex items-center gap-1.5">
                         <svg class="w-4 h-4 text-pj-blue-dark" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 0121 9z"/></svg>
@@ -675,8 +674,8 @@
     <script>
         const ADMIN_EMAIL = 'mean13ayu@gmail.com';
         let currentAdminPass = '1234';
+        const IMGUR_CLIENT_ID = 'e7f2238472530a6'; // Imgur Public Free Client Key
 
-        // โหลดรหัสผ่านจากความจำเครื่อง (ถ้าเคยเปลี่ยน)
         if (localStorage.getItem('pj_admin_pass')) {
             currentAdminPass = localStorage.getItem('pj_admin_pass');
         }
@@ -709,63 +708,10 @@
 
         let reviews = [];
 
-        /* ---------- Broadcast Channel Sync (รองรับการซิงก์ข้อมูลข้ามแท็บอย่างเสถียร) ---------- */
-        let broadcastChan = null;
-
-        function initSharedDb() {
-            try {
-                if ('BroadcastChannel' in window) {
-                    broadcastChan = new BroadcastChannel('miori_shop_channel');
-                    broadcastChan.onmessage = (event) => {
-                        if (event.data) {
-                            if (event.data.siteData) siteData = event.data.siteData;
-                            if (event.data.queues) queues = event.data.queues;
-                            if (event.data.reviews) reviews = event.data.reviews;
-
-                            renderSiteElements();
-                            renderQueues();
-                            renderReviews();
-
-                            if (document.getElementById('modal-admin-panel') && document.getElementById('modal-admin-panel').classList.contains('active')) {
-                                renderAdminQueueManage();
-                                renderAdminPendingReviews();
-                            }
-                        }
-                    };
-                }
-            } catch (e) {
-                console.error("BroadcastChannel initialized fail", e);
-            }
-        }
-
-        function pushSharedState() {
-            if (broadcastChan) {
-                try {
-                    broadcastChan.postMessage({ siteData: siteData, queues: queues, reviews: reviews });
-                } catch (e) {
-                    console.error("Broadcast fail", e);
-                }
-            }
-        }
-        /* -------------------------------------------------------------------------------- */
-
         window.addEventListener('DOMContentLoaded', () => {
             try {
                 const savedSiteData = localStorage.getItem('pj_site_data');
                 if (savedSiteData) siteData = JSON.parse(savedSiteData);
-                if (!siteData.links) {
-                    siteData.links = {
-                        facebook: "https://www.facebook.com/profile.php?id=61591413135110",
-                        line: "https://lin.ee/XkF46in",
-                        instagram: "https://www.instagram.com/pinkjulie.land",
-                        driveBlock: "https://drive.google.com/drive/folders/10wVjpHKCr8rMZ-UoCd5G_ALc13AUC1Qk",
-                        driveToon: "https://drive.google.com/drive/folders/1T36yZKLHN5huKfwu1NYW_PVLLsswHTiD",
-                        driveDescor: "https://drive.google.com/drive/folders/1YLsW06GXE_ENus4ad8AUNU4FEM74Z2vl"
-                    };
-                }
-                if (!siteData.links.driveBlock) siteData.links.driveBlock = "https://drive.google.com/drive/folders/10wVjpHKCr8rMZ-UoCd5G_ALc13AUC1Qk";
-                if (!siteData.links.driveToon) siteData.links.driveToon = "https://drive.google.com/drive/folders/1T36yZKLHN5huKfwu1NYW_PVLLsswHTiD";
-                if (!siteData.links.driveDescor) siteData.links.driveDescor = "https://drive.google.com/drive/folders/1YLsW06GXE_ENus4ad8AUNU4FEM74Z2vl";
 
                 const savedQueues = localStorage.getItem('pj_queues');
                 if (savedQueues) queues = JSON.parse(savedQueues);
@@ -779,8 +725,6 @@
             renderSiteElements();
             renderQueues();
             renderReviews();
-
-            initSharedDb();
         });
 
         function renderSiteElements() {
@@ -813,44 +757,26 @@
 
         function populateChannelLinksInputs() {
             if (!siteData.links) return;
-            const fbInput = document.getElementById('link-facebook-input');
-            const lineInput = document.getElementById('link-line-input');
-            const igInput = document.getElementById('link-instagram-input');
-            if (fbInput) fbInput.value = siteData.links.facebook || '';
-            if (lineInput) lineInput.value = siteData.links.line || '';
-            if (igInput) igInput.value = siteData.links.instagram || '';
-
-            const blockInput = document.getElementById('link-drive-block-input');
-            const toonInput = document.getElementById('link-drive-toon-input');
-            const descorInput = document.getElementById('link-drive-descor-input');
-            if (blockInput) blockInput.value = siteData.links.driveBlock || '';
-            if (toonInput) toonInput.value = siteData.links.driveToon || '';
-            if (descorInput) descorInput.value = siteData.links.driveDescor || '';
+            document.getElementById('link-facebook-input').value = siteData.links.facebook || '';
+            document.getElementById('link-line-input').value = siteData.links.line || '';
+            document.getElementById('link-instagram-input').value = siteData.links.instagram || '';
+            document.getElementById('link-drive-block-input').value = siteData.links.driveBlock || '';
+            document.getElementById('link-drive-toon-input').value = siteData.links.driveToon || '';
+            document.getElementById('link-drive-descor-input').value = siteData.links.driveDescor || '';
         }
 
         function saveChannelLinks() {
-            const fb = document.getElementById('link-facebook-input').value.trim();
-            const line = document.getElementById('link-line-input').value.trim();
-            const ig = document.getElementById('link-instagram-input').value.trim();
-            const block = document.getElementById('link-drive-block-input').value.trim();
-            const toon = document.getElementById('link-drive-toon-input').value.trim();
-            const descor = document.getElementById('link-drive-descor-input').value.trim();
+            siteData.links = siteData.links || {};
+            siteData.links.facebook = document.getElementById('link-facebook-input').value.trim();
+            siteData.links.line = document.getElementById('link-line-input').value.trim();
+            siteData.links.instagram = document.getElementById('link-instagram-input').value.trim();
+            siteData.links.driveBlock = document.getElementById('link-drive-block-input').value.trim();
+            siteData.links.driveToon = document.getElementById('link-drive-toon-input').value.trim();
+            siteData.links.driveDescor = document.getElementById('link-drive-descor-input').value.trim();
 
-            if (!siteData.links) siteData.links = {};
-            if (fb) siteData.links.facebook = fb;
-            if (line) siteData.links.line = line;
-            if (ig) siteData.links.instagram = ig;
-            if (block) siteData.links.driveBlock = block;
-            if (toon) siteData.links.driveToon = toon;
-            if (descor) siteData.links.driveDescor = descor;
-
-            try {
-                localStorage.setItem('pj_site_data', JSON.stringify(siteData));
-            } catch(e) {}
-
+            localStorage.setItem('pj_site_data', JSON.stringify(siteData));
             renderChannelLinks();
-            pushSharedState();
-            alert('บันทึกลิงก์ช่องทางเรียบร้อยแล้วค่ะ');
+            alert('บันทึกลิงก์เรียบร้อยแล้ว');
         }
 
         function openModal(id) {
@@ -874,7 +800,6 @@
         function openReviewModal() { openModal('modal-review-form'); }
         function openAdminAuthModal() { openModal('modal-admin-auth'); }
 
-        /* ฟังก์ชันเช็กล็อกอินแอดมิน */
         function checkAdminLogin() {
             const emailInput = document.getElementById('admin-email-input');
             const passInput = document.getElementById('admin-pass-input');
@@ -896,20 +821,11 @@
             const newPass = document.getElementById('change-pass-new').value.trim();
             const confirmPass = document.getElementById('change-pass-confirm').value.trim();
 
-            if (!newPass) {
-                alert('กรุณากรอกรหัสผ่านใหม่ด้วยนะคะ');
-                return;
-            }
-
-            if (newPass !== confirmPass) {
-                alert('รหัสผ่านใหม่และรหัสผ่านยืนยันไม่ตรงกันค่ะ');
-                return;
-            }
+            if (!newPass) return alert('กรุณากรอกรหัสผ่านใหม่ด้วยนะคะ');
+            if (newPass !== confirmPass) return alert('รหัสผ่านใหม่และรหัสผ่านยืนยันไม่ตรงกันค่ะ');
 
             currentAdminPass = newPass;
             localStorage.setItem('pj_admin_pass', newPass);
-            document.getElementById('change-pass-new').value = '';
-            document.getElementById('change-pass-confirm').value = '';
             alert('เปลี่ยนรหัสผ่านสำเร็จเรียบร้อยค่ะ!');
         }
 
@@ -926,90 +842,84 @@
             }
         }
 
-        function compressAndProcessFile(file, maxWidth, maxHeight, callback) {
-            if (!file) {
-                callback(null);
-                return;
+        // ฟังก์ชันช่วยอัปโหลดไฟล์ขึ้น Cloud ฟรี (Imgur API)
+        async function uploadFileToCloud(file) {
+            if (!file) return null;
+            const formData = new FormData();
+            formData.append('image', file);
+
+            try {
+                const res = await fetch('https://api.imgur.com/3/image', {
+                    method: 'POST',
+                    headers: {
+                        Authorization: 'Client-ID ' + IMGUR_CLIENT_ID
+                    },
+                    body: formData
+                });
+                const data = await res.json();
+                if (data.success) {
+                    return data.data.link;
+                } else {
+                    return null;
+                }
+            } catch(err) {
+                console.error("Cloud Upload Error:", err);
+                return null;
             }
-            const reader = new FileReader();
-            reader.onload = function(e) {
-                const img = new Image();
-                img.onload = function() {
-                    const canvas = document.createElement('canvas');
-                    let width = img.width;
-                    let height = img.height;
-
-                    if (width > maxWidth) {
-                        height = Math.round((height * maxWidth) / width);
-                        width = maxWidth;
-                    }
-                    if (height > maxHeight) {
-                        width = Math.round((width * maxHeight) / height);
-                        height = maxHeight;
-                    }
-
-                    canvas.width = width;
-                    canvas.height = height;
-
-                    const ctx = canvas.getContext('2d');
-                    ctx.drawImage(img, 0, 0, width, height);
-                    const base64Res = canvas.toDataURL('image/jpeg', 0.85);
-                    callback(base64Res);
-                };
-                img.src = e.target.result;
-            };
-            reader.readAsDataURL(file);
         }
 
-        function saveAllImageChanges() {
+        async function saveAllImageChanges() {
+            const btnText = document.getElementById('btn-save-text');
             const logoFile = document.getElementById('file-input-logo').files[0];
             const bannerFile = document.getElementById('file-input-banner').files[0];
             const prod1File = document.getElementById('file-input-prod1').files[0];
             const prod2File = document.getElementById('file-input-prod2').files[0];
             const prod3File = document.getElementById('file-input-prod3').files[0];
 
-            let tasks = [
-                { file: logoFile, w: 400, h: 400, apply: (res) => siteData.logoUrl = res },
-                { file: bannerFile, w: 1200, h: 400, apply: (res) => siteData.bannerUrl = res },
-                { file: prod1File, w: 800, h: 800, apply: (res) => siteData.products[0].img = res },
-                { file: prod2File, w: 800, h: 800, apply: (res) => siteData.products[1].img = res },
-                { file: prod3File, w: 800, h: 800, apply: (res) => siteData.products[2].img = res }
-            ];
-
-            let pending = tasks.filter(t => t.file !== undefined && t.file !== null).length;
-
-            if (pending === 0) {
-                alert('กรุณาเลือกไฟล์รูปภาพก่อนกดบันทึกนะคะ');
+            if (!logoFile && !bannerFile && !prod1File && !prod2File && !prod3File) {
+                alert('กรุณาเลือกไฟล์รูปภาพจากอัลบั้มก่อนกดบันทึกนะคะ');
                 return;
             }
 
-            tasks.forEach(task => {
-                if (task.file) {
-                    compressAndProcessFile(task.file, task.w, task.h, (compressedBase64) => {
-                        if (compressedBase64) {
-                            task.apply(compressedBase64);
-                        }
-                        pending--;
-                        if (pending === 0) {
-                            try {
-                                localStorage.setItem('pj_site_data', JSON.stringify(siteData));
-                                renderSiteElements();
-                                pushSharedState();
-                                alert('บันทึกรูปภาพเรียบร้อยแล้วค่ะ');
-                                
-                                ['logo', 'banner', 'prod1', 'prod2', 'prod3'].forEach(key => {
-                                    const fileIn = document.getElementById(`file-input-${key}`);
-                                    const prevImg = document.getElementById(`preview-${key}`);
-                                    if (fileIn) fileIn.value = '';
-                                    if (prevImg) prevImg.classList.add('hidden');
-                                });
-                            } catch (err) {
-                                alert('เกิดข้อผิดพลาดในการบันทึก กรุณาลองใช้รูปที่มีขนาดไฟล์เล็กลงนะคะ');
-                            }
-                        }
-                    });
+            btnText.innerText = "กำลังอัปโหลดรูปขึ้น Cloud...";
+
+            try {
+                if (logoFile) {
+                    const url = await uploadFileToCloud(logoFile);
+                    if (url) siteData.logoUrl = url;
                 }
-            });
+                if (bannerFile) {
+                    const url = await uploadFileToCloud(bannerFile);
+                    if (url) siteData.bannerUrl = url;
+                }
+                if (prod1File) {
+                    const url = await uploadFileToCloud(prod1File);
+                    if (url) siteData.products[0].img = url;
+                }
+                if (prod2File) {
+                    const url = await uploadFileToCloud(prod2File);
+                    if (url) siteData.products[1].img = url;
+                }
+                if (prod3File) {
+                    const url = await uploadFileToCloud(prod3File);
+                    if (url) siteData.products[2].img = url;
+                }
+
+                localStorage.setItem('pj_site_data', JSON.stringify(siteData));
+                renderSiteElements();
+                alert('อัปโหลดและบันทึกรูปภาพขึ้น Cloud เรียบร้อยแล้วค่ะ!');
+
+                ['logo', 'banner', 'prod1', 'prod2', 'prod3'].forEach(key => {
+                    const fileIn = document.getElementById(`file-input-${key}`);
+                    const prevImg = document.getElementById(`preview-${key}`);
+                    if (fileIn) fileIn.value = '';
+                    if (prevImg) prevImg.classList.add('hidden');
+                });
+            } catch (err) {
+                alert('เกิดข้อผิดพลาดในการอัปโหลดภาพ กรุณาลองใหม่อีกครั้งนะคะ');
+            } finally {
+                btnText.innerText = "อัปโหลดและบันทึกรูปภาพขึ้น Cloud";
+            }
         }
 
         function getStatusText(status) {
@@ -1108,12 +1018,13 @@
 
         let tempUploadedImage = '';
 
-        function handleImageUpload(e) {
+        async function handleImageUpload(e) {
             const file = e.target.files[0];
             if (file) {
-                compressAndProcessFile(file, 400, 400, (res) => {
-                    tempUploadedImage = res;
-                });
+                const url = await uploadFileToCloud(file);
+                if (url) {
+                    tempUploadedImage = url;
+                }
             }
         }
 
@@ -1123,22 +1034,15 @@
             const text = document.getElementById('review-text').value;
             const proofImg = tempUploadedImage || "https://placehold.co/100x100/ffb3c6/ffffff?text=User";
 
-            const newReview = {
+            reviews.push({
                 id: Date.now(),
                 name: name,
                 text: text,
                 proofImg: proofImg,
                 approved: false
-            };
+            });
 
-            reviews.push(newReview);
-            try {
-                localStorage.setItem('pj_reviews', JSON.stringify(reviews));
-            } catch(err) {
-                console.error(err);
-            }
-            pushSharedState();
-
+            localStorage.setItem('pj_reviews', JSON.stringify(reviews));
             alert('ส่งรีวิวเรียบร้อยแล้ว กรุณารอแอดมินอนุมัตินะคะ');
             closeModal('modal-review-form');
             e.target.reset();
@@ -1201,20 +1105,15 @@
             const nameInput = document.getElementById('new-client-name');
             const statusInput = document.getElementById('new-client-status');
 
-            if (!nameInput.value.trim()) {
-                alert('กรุณากรอกชื่อลูกค้าด้วยนะคะ');
-                return;
-            }
+            if (!nameInput.value.trim()) return alert('กรุณากรอกชื่อลูกค้าด้วยนะคะ');
 
-            const newQ = {
+            queues.unshift({
                 id: Date.now(),
                 name: nameInput.value.trim(),
                 status: parseInt(statusInput.value)
-            };
+            });
 
-            queues.unshift(newQ);
             localStorage.setItem('pj_queues', JSON.stringify(queues));
-            pushSharedState();
             nameInput.value = '';
             renderAdminQueueManage();
             renderQueues();
@@ -1225,7 +1124,6 @@
             if (q) {
                 q.name = newName;
                 localStorage.setItem('pj_queues', JSON.stringify(queues));
-                pushSharedState();
                 renderQueues();
             }
         }
@@ -1235,7 +1133,6 @@
             if (q) {
                 q.status = parseInt(newStatus);
                 localStorage.setItem('pj_queues', JSON.stringify(queues));
-                pushSharedState();
                 renderQueues();
             }
         }
@@ -1244,7 +1141,6 @@
             if (confirm('ต้องการลบคิวนี้ออกหรือไม่คะ?')) {
                 queues = queues.filter(item => item.id !== id);
                 localStorage.setItem('pj_queues', JSON.stringify(queues));
-                pushSharedState();
                 renderAdminQueueManage();
                 renderQueues();
             }
@@ -1291,7 +1187,6 @@
             if (r) {
                 r.approved = true;
                 localStorage.setItem('pj_reviews', JSON.stringify(reviews));
-                pushSharedState();
                 renderAdminPendingReviews();
                 renderReviews();
                 alert('อนุมัติรีวิวเรียบร้อยแล้วค่ะ');
@@ -1302,7 +1197,6 @@
             if (confirm('ปฏิเสธและลบรีวิวนี้หรือไม่?')) {
                 reviews = reviews.filter(item => item.id !== id);
                 localStorage.setItem('pj_reviews', JSON.stringify(reviews));
-                pushSharedState();
                 renderAdminPendingReviews();
             }
         }
