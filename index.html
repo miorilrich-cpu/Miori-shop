@@ -709,60 +709,42 @@
 
         let reviews = [];
 
-        /* ---------- Shared "db" sync (คนเข้าเว็บเครื่องอื่นจะเห็นข้อมูลเดียวกัน) ---------- */
-        let sharedDb = null;
-        let sharedDocRef = null;
-        let dbSyncReady = false;
+        /* ---------- Broadcast Channel Sync (รองรับการซิงก์ข้อมูลข้ามแท็บอย่างเสถียร) ---------- */
+        let broadcastChan = null;
 
-        async function initSharedDb() {
+        function initSharedDb() {
             try {
-                sharedDb = await claude.use("db");
+                if ('BroadcastChannel' in window) {
+                    broadcastChan = new BroadcastChannel('miori_shop_channel');
+                    broadcastChan.onmessage = (event) => {
+                        if (event.data) {
+                            if (event.data.siteData) siteData = event.data.siteData;
+                            if (event.data.queues) queues = event.data.queues;
+                            if (event.data.reviews) reviews = event.data.reviews;
+
+                            renderSiteElements();
+                            renderQueues();
+                            renderReviews();
+
+                            if (document.getElementById('modal-admin-panel') && document.getElementById('modal-admin-panel').classList.contains('active')) {
+                                renderAdminQueueManage();
+                                renderAdminPendingReviews();
+                            }
+                        }
+                    };
+                }
             } catch (e) {
-                sharedDb = null;
-            }
-            if (!sharedDb) return; // ไม่รองรับ: ใช้ localStorage แบบเดิมต่อไป
-
-            sharedDocRef = sharedDb.doc("miori_shop/site_state");
-            dbSyncReady = true;
-
-            try {
-                sharedDocRef.onSnapshot((docSnap) => {
-                    if (!docSnap || !docSnap.exists) {
-                        // ยังไม่เคยมีข้อมูลกลาง ให้ seed ด้วยข้อมูลปัจจุบันของเครื่องนี้ (ครั้งแรกเท่านั้น)
-                        pushSharedState();
-                        return;
-                    }
-                    const data = docSnap.data || {};
-                    if (data.siteData) siteData = data.siteData;
-                    if (data.queues) queues = data.queues;
-                    if (data.reviews) reviews = data.reviews;
-
-                    // sync ไว้ใน localStorage ของเครื่องนี้ด้วย เผื่อออฟไลน์/db ใช้ไม่ได้ชั่วคราว
-                    try {
-                        localStorage.setItem('pj_site_data', JSON.stringify(siteData));
-                        localStorage.setItem('pj_queues', JSON.stringify(queues));
-                        localStorage.setItem('pj_reviews', JSON.stringify(reviews));
-                    } catch(e) {}
-
-                    renderSiteElements();
-                    renderQueues();
-                    renderReviews();
-                    if (document.getElementById('modal-admin-panel') && document.getElementById('modal-admin-panel').classList.contains('active')) {
-                        renderAdminQueueManage();
-                        renderAdminPendingReviews();
-                    }
-                });
-            } catch (e) {
-                dbSyncReady = false;
+                console.error("BroadcastChannel initialized fail", e);
             }
         }
 
         function pushSharedState() {
-            if (!dbSyncReady || !sharedDocRef) return;
-            try {
-                sharedDocRef.set({ siteData: siteData, queues: queues, reviews: reviews });
-            } catch (e) {
-                // เงียบไว้: ถ้า db ใช้ไม่ได้ ข้อมูลยังถูกบันทึกลง localStorage ของเครื่องนี้ตามปกติ
+            if (broadcastChan) {
+                try {
+                    broadcastChan.postMessage({ siteData: siteData, queues: queues, reviews: reviews });
+                } catch (e) {
+                    console.error("Broadcast fail", e);
+                }
             }
         }
         /* -------------------------------------------------------------------------------- */
@@ -798,7 +780,6 @@
             renderQueues();
             renderReviews();
 
-            // พยายามต่อกับข้อมูลกลาง เพื่อให้ทุกเครื่องเห็นรูป/คิว/รีวิวชุดเดียวกัน
             initSharedDb();
         });
 
