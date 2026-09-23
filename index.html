@@ -100,12 +100,12 @@
     <!-- Audio Player Hidden Element -->
     <iframe id="bg-music-iframe" style="display:none;" width="560" height="315" src="https://www.youtube.com/embed/l-fZh5Maq0k?enablejsapi=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-    <!-- Floating Music Toggle Button Top-Right -->
-    <button id="music-toggle-btn" onclick="toggleMusic()" class="fixed top-4 right-4 z-50 bg-pj-white border-2 border-pj-pink p-3 rounded-full shadow-lg hover:scale-110 transition-transform duration-300 flex items-center justify-center text-pj-pink group" title="เปิด/ปิดเพลง">
-        <svg id="music-icon" class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
+    <!-- Floating Music Toggle Button (ฝั่งซ้าย ขนาดเล็กลง) -->
+    <button id="music-toggle-btn" onclick="toggleMusic()" class="fixed top-4 left-4 z-50 bg-pj-white border-2 border-pj-pink p-1.5 rounded-full shadow-lg hover:scale-110 transition-transform duration-300 flex items-center justify-center text-pj-pink group" title="เปิด/ปิดเพลง">
+        <svg id="music-icon" class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
             <path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/>
         </svg>
-        <span id="music-status-dot" class="absolute top-1 right-1 w-3 h-3 bg-gray-400 rounded-full border-2 border-white"></span>
+        <span id="music-status-dot" class="absolute top-0.5 right-0.5 w-2 h-2 bg-gray-400 rounded-full border border-white"></span>
     </button>
 
     <!-- Admin Panel Floating Button Bottom-Left -->
@@ -204,7 +204,7 @@
             </div>
             <div class="grid grid-cols-3 gap-3">
                 <!-- Slot 1: Block -->
-                <a href="https://drive.google.com/drive/folders/10wVjpHKCr8rMZ-UoCd5G_ALc13AUC1Qk" target="_blank" class="bg-pj-white p-2 rounded-2xl border-2 border-pj-pink/50 shadow-sm flex flex-col items-center hover:scale-105 transition-transform">
+                <a id="prod-link-1" href="https://drive.google.com/drive/folders/10wVjpHKCr8rMZ-UoCd5G_ALc13AUC1Qk" target="_blank" class="bg-pj-white p-2 rounded-2xl border-2 border-pj-pink/50 shadow-sm flex flex-col items-center hover:scale-105 transition-transform">
                     <div class="w-full aspect-square rounded-xl overflow-hidden bg-pj-pink/20 mb-2 border border-pj-pink/30">
                         <img id="prod-img-1" src="https://placehold.co/1280x1280/ffb3c6/ffffff?text=Block" alt="Block" class="w-full h-full object-cover">
                     </div>
@@ -214,7 +214,7 @@
                 </a>
 
                 <!-- Slot 2: Toon -->
-                <a href="https://drive.google.com/drive/folders/1T36yZKLHN5huKfwu1NYW_PVLLsswHTiD" target="_blank" class="bg-pj-white p-2 rounded-2xl border-2 border-pj-yellow-main shadow-sm flex flex-col items-center hover:scale-105 transition-transform">
+                <a id="prod-link-2" href="https://drive.google.com/drive/folders/1T36yZKLHN5huKfwu1NYW_PVLLsswHTiD" target="_blank" class="bg-pj-white p-2 rounded-2xl border-2 border-pj-yellow-main shadow-sm flex flex-col items-center hover:scale-105 transition-transform">
                     <div class="w-full aspect-square rounded-xl overflow-hidden bg-pj-yellow-light/50 mb-2 border border-pj-yellow-main/30">
                         <img id="prod-img-2" src="https://placehold.co/1280x1280/ffe066/705446?text=Toon" alt="Toon" class="w-full h-full object-cover">
                     </div>
@@ -224,7 +224,7 @@
                 </a>
 
                 <!-- Slot 3: Descor -->
-                <a href="https://drive.google.com/drive/folders/1YLsW06GXE_ENus4ad8AUNU4FEM74Z2vl" target="_blank" class="bg-pj-white p-2 rounded-2xl border-2 border-pj-blue-light shadow-sm flex flex-col items-center hover:scale-105 transition-transform">
+                <a id="prod-link-3" href="https://drive.google.com/drive/folders/1YLsW06GXE_ENus4ad8AUNU4FEM74Z2vl" target="_blank" class="bg-pj-white p-2 rounded-2xl border-2 border-pj-blue-light shadow-sm flex flex-col items-center hover:scale-105 transition-transform">
                     <div class="w-full aspect-square rounded-xl overflow-hidden bg-pj-blue-light/30 mb-2 border border-pj-blue-light/30">
                         <img id="prod-img-3" src="https://placehold.co/1280x1280/ffccd5/705446?text=Descor" alt="Descor" class="w-full h-full object-cover">
                     </div>
@@ -414,13 +414,13 @@
                 Contact
             </h2>
             <div class="flex gap-4">
-                <a href="https://www.facebook.com/profile.php?id=61591413135110" target="_blank" class="w-12 h-12 bg-pj-white border-2 border-pj-pink rounded-full flex items-center justify-center text-pj-blue-main hover:bg-pj-pink hover:text-pj-white transition-colors shadow-sm">
+                <a id="contact-facebook-link" href="https://www.facebook.com/profile.php?id=61591413135110" target="_blank" class="w-12 h-12 bg-pj-white border-2 border-pj-pink rounded-full flex items-center justify-center text-pj-blue-main hover:bg-pj-pink hover:text-pj-white transition-colors shadow-sm">
                     <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
                 </a>
-                <a href="https://lin.ee/XkF46in" target="_blank" class="w-12 h-12 bg-pj-white border-2 border-pj-pink rounded-full flex items-center justify-center text-pj-blue-main hover:bg-pj-pink hover:text-pj-white transition-colors shadow-sm">
+                <a id="contact-line-link" href="https://lin.ee/XkF46in" target="_blank" class="w-12 h-12 bg-pj-white border-2 border-pj-pink rounded-full flex items-center justify-center text-pj-blue-main hover:bg-pj-pink hover:text-pj-white transition-colors shadow-sm">
                     <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
                 </a>
-                <a href="https://www.instagram.com/pinkjulie.land" target="_blank" class="instagram-link-btn w-12 h-12 bg-pj-white border-2 border-pj-pink rounded-full flex items-center justify-center text-pj-blue-main hover:bg-pj-pink hover:text-pj-white transition-colors shadow-sm">
+                <a id="contact-instagram-link" href="https://www.instagram.com/pinkjulie.land" target="_blank" class="instagram-link-btn w-12 h-12 bg-pj-white border-2 border-pj-pink rounded-full flex items-center justify-center text-pj-blue-main hover:bg-pj-pink hover:text-pj-white transition-colors shadow-sm">
                     <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
                 </a>
             </div>
@@ -578,6 +578,43 @@
                     </div>
                 </div>
 
+                <!-- 1.5 จัดการลิงก์ช่องทางต่างๆ -->
+                <div class="bg-pj-bg p-4 rounded-2xl border border-pj-pink/40">
+                    <h3 class="font-bold text-sm text-pj-blue-dark mb-3 flex items-center gap-1.5">
+                        <svg class="w-4 h-4 text-pj-blue-main" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path d="M13.828 10.172a4 4 0 010 5.656l-4 4a4 4 0 01-5.656-5.656l1.5-1.5M10.172 13.828a4 4 0 010-5.656l4-4a4 4 0 015.656 5.656l-1.5 1.5"/></svg>
+                        แก้ไขลิงก์ช่องทางต่างๆ
+                    </h3>
+                    <div class="space-y-2 text-xs">
+                        <div>
+                            <label class="block font-bold text-pj-blue-dark mb-1">ลิงก์ Facebook</label>
+                            <input type="text" id="link-facebook-input" placeholder="https://facebook.com/..." class="w-full border border-pj-pink/40 rounded-lg px-2 py-1.5 bg-white">
+                        </div>
+                        <div>
+                            <label class="block font-bold text-pj-blue-dark mb-1">ลิงก์ Line</label>
+                            <input type="text" id="link-line-input" placeholder="https://lin.ee/..." class="w-full border border-pj-pink/40 rounded-lg px-2 py-1.5 bg-white">
+                        </div>
+                        <div>
+                            <label class="block font-bold text-pj-blue-dark mb-1">ลิงก์ Instagram (สำรอง ยังไม่แสดงผล)</label>
+                            <input type="text" id="link-instagram-input" placeholder="https://instagram.com/..." class="w-full border border-pj-pink/40 rounded-lg px-2 py-1.5 bg-white">
+                        </div>
+                        <div class="pt-2 border-t border-pj-pink/20">
+                            <label class="block font-bold text-pj-blue-dark mb-1">ลิงก์ไดรฟ์ Block</label>
+                            <input type="text" id="link-drive-block-input" placeholder="https://drive.google.com/..." class="w-full border border-pj-pink/40 rounded-lg px-2 py-1.5 bg-white">
+                        </div>
+                        <div>
+                            <label class="block font-bold text-pj-blue-dark mb-1">ลิงก์ไดรฟ์ Toon</label>
+                            <input type="text" id="link-drive-toon-input" placeholder="https://drive.google.com/..." class="w-full border border-pj-pink/40 rounded-lg px-2 py-1.5 bg-white">
+                        </div>
+                        <div>
+                            <label class="block font-bold text-pj-blue-dark mb-1">ลิงก์ไดรฟ์ Descor</label>
+                            <input type="text" id="link-drive-descor-input" placeholder="https://drive.google.com/..." class="w-full border border-pj-pink/40 rounded-lg px-2 py-1.5 bg-white">
+                        </div>
+                        <button onclick="saveChannelLinks()" class="w-full bg-pj-pink text-pj-white font-bold py-2 rounded-xl text-xs hover:bg-pj-blue-main transition shadow-sm mt-1">
+                            บันทึกลิงก์ช่องทาง
+                        </button>
+                    </div>
+                </div>
+
                 <!-- 2. จัดการคิวงานลูกค้า -->
                 <div class="bg-pj-bg p-4 rounded-2xl border border-pj-pink/40">
                     <h3 class="font-bold text-sm text-pj-blue-dark mb-3 flex items-center gap-1.5">
@@ -651,7 +688,15 @@
                 { img: "https://placehold.co/1280x1280/ffb3c6/ffffff?text=Block" },
                 { img: "https://placehold.co/1280x1280/ffe066/705446?text=Toon" },
                 { img: "https://placehold.co/1280x1280/ffccd5/705446?text=Descor" }
-            ]
+            ],
+            links: {
+                facebook: "https://www.facebook.com/profile.php?id=61591413135110",
+                line: "https://lin.ee/XkF46in",
+                instagram: "https://www.instagram.com/pinkjulie.land",
+                driveBlock: "https://drive.google.com/drive/folders/10wVjpHKCr8rMZ-UoCd5G_ALc13AUC1Qk",
+                driveToon: "https://drive.google.com/drive/folders/1T36yZKLHN5huKfwu1NYW_PVLLsswHTiD",
+                driveDescor: "https://drive.google.com/drive/folders/1YLsW06GXE_ENus4ad8AUNU4FEM74Z2vl"
+            }
         };
 
         let queues = [
@@ -664,10 +709,81 @@
 
         let reviews = [];
 
+        /* ---------- Shared "db" sync (คนเข้าเว็บเครื่องอื่นจะเห็นข้อมูลเดียวกัน) ---------- */
+        let sharedDb = null;
+        let sharedDocRef = null;
+        let dbSyncReady = false;
+
+        async function initSharedDb() {
+            try {
+                sharedDb = await claude.use("db");
+            } catch (e) {
+                sharedDb = null;
+            }
+            if (!sharedDb) return; // ไม่รองรับ: ใช้ localStorage แบบเดิมต่อไป
+
+            sharedDocRef = sharedDb.doc("miori_shop/site_state");
+            dbSyncReady = true;
+
+            try {
+                sharedDocRef.onSnapshot((docSnap) => {
+                    if (!docSnap || !docSnap.exists) {
+                        // ยังไม่เคยมีข้อมูลกลาง ให้ seed ด้วยข้อมูลปัจจุบันของเครื่องนี้ (ครั้งแรกเท่านั้น)
+                        pushSharedState();
+                        return;
+                    }
+                    const data = docSnap.data || {};
+                    if (data.siteData) siteData = data.siteData;
+                    if (data.queues) queues = data.queues;
+                    if (data.reviews) reviews = data.reviews;
+
+                    // sync ไว้ใน localStorage ของเครื่องนี้ด้วย เผื่อออฟไลน์/db ใช้ไม่ได้ชั่วคราว
+                    try {
+                        localStorage.setItem('pj_site_data', JSON.stringify(siteData));
+                        localStorage.setItem('pj_queues', JSON.stringify(queues));
+                        localStorage.setItem('pj_reviews', JSON.stringify(reviews));
+                    } catch(e) {}
+
+                    renderSiteElements();
+                    renderQueues();
+                    renderReviews();
+                    if (document.getElementById('modal-admin-panel') && document.getElementById('modal-admin-panel').classList.contains('active')) {
+                        renderAdminQueueManage();
+                        renderAdminPendingReviews();
+                    }
+                });
+            } catch (e) {
+                dbSyncReady = false;
+            }
+        }
+
+        function pushSharedState() {
+            if (!dbSyncReady || !sharedDocRef) return;
+            try {
+                sharedDocRef.set({ siteData: siteData, queues: queues, reviews: reviews });
+            } catch (e) {
+                // เงียบไว้: ถ้า db ใช้ไม่ได้ ข้อมูลยังถูกบันทึกลง localStorage ของเครื่องนี้ตามปกติ
+            }
+        }
+        /* -------------------------------------------------------------------------------- */
+
         window.addEventListener('DOMContentLoaded', () => {
             try {
                 const savedSiteData = localStorage.getItem('pj_site_data');
                 if (savedSiteData) siteData = JSON.parse(savedSiteData);
+                if (!siteData.links) {
+                    siteData.links = {
+                        facebook: "https://www.facebook.com/profile.php?id=61591413135110",
+                        line: "https://lin.ee/XkF46in",
+                        instagram: "https://www.instagram.com/pinkjulie.land",
+                        driveBlock: "https://drive.google.com/drive/folders/10wVjpHKCr8rMZ-UoCd5G_ALc13AUC1Qk",
+                        driveToon: "https://drive.google.com/drive/folders/1T36yZKLHN5huKfwu1NYW_PVLLsswHTiD",
+                        driveDescor: "https://drive.google.com/drive/folders/1YLsW06GXE_ENus4ad8AUNU4FEM74Z2vl"
+                    };
+                }
+                if (!siteData.links.driveBlock) siteData.links.driveBlock = "https://drive.google.com/drive/folders/10wVjpHKCr8rMZ-UoCd5G_ALc13AUC1Qk";
+                if (!siteData.links.driveToon) siteData.links.driveToon = "https://drive.google.com/drive/folders/1T36yZKLHN5huKfwu1NYW_PVLLsswHTiD";
+                if (!siteData.links.driveDescor) siteData.links.driveDescor = "https://drive.google.com/drive/folders/1YLsW06GXE_ENus4ad8AUNU4FEM74Z2vl";
 
                 const savedQueues = localStorage.getItem('pj_queues');
                 if (savedQueues) queues = JSON.parse(savedQueues);
@@ -681,6 +797,9 @@
             renderSiteElements();
             renderQueues();
             renderReviews();
+
+            // พยายามต่อกับข้อมูลกลาง เพื่อให้ทุกเครื่องเห็นรูป/คิว/รีวิวชุดเดียวกัน
+            initSharedDb();
         });
 
         function renderSiteElements() {
@@ -690,6 +809,67 @@
             if(siteData.products && siteData.products[0] && siteData.products[0].img) document.getElementById('prod-img-1').src = siteData.products[0].img;
             if(siteData.products && siteData.products[1] && siteData.products[1].img) document.getElementById('prod-img-2').src = siteData.products[1].img;
             if(siteData.products && siteData.products[2] && siteData.products[2].img) document.getElementById('prod-img-3').src = siteData.products[2].img;
+
+            renderChannelLinks();
+        }
+
+        function renderChannelLinks() {
+            if (!siteData.links) return;
+            const fb = document.getElementById('contact-facebook-link');
+            const line = document.getElementById('contact-line-link');
+            const ig = document.getElementById('contact-instagram-link');
+            if (fb && siteData.links.facebook) fb.href = siteData.links.facebook;
+            if (line && siteData.links.line) line.href = siteData.links.line;
+            if (ig && siteData.links.instagram) ig.href = siteData.links.instagram;
+
+            const prodBlock = document.getElementById('prod-link-1');
+            const prodToon = document.getElementById('prod-link-2');
+            const prodDescor = document.getElementById('prod-link-3');
+            if (prodBlock && siteData.links.driveBlock) prodBlock.href = siteData.links.driveBlock;
+            if (prodToon && siteData.links.driveToon) prodToon.href = siteData.links.driveToon;
+            if (prodDescor && siteData.links.driveDescor) prodDescor.href = siteData.links.driveDescor;
+        }
+
+        function populateChannelLinksInputs() {
+            if (!siteData.links) return;
+            const fbInput = document.getElementById('link-facebook-input');
+            const lineInput = document.getElementById('link-line-input');
+            const igInput = document.getElementById('link-instagram-input');
+            if (fbInput) fbInput.value = siteData.links.facebook || '';
+            if (lineInput) lineInput.value = siteData.links.line || '';
+            if (igInput) igInput.value = siteData.links.instagram || '';
+
+            const blockInput = document.getElementById('link-drive-block-input');
+            const toonInput = document.getElementById('link-drive-toon-input');
+            const descorInput = document.getElementById('link-drive-descor-input');
+            if (blockInput) blockInput.value = siteData.links.driveBlock || '';
+            if (toonInput) toonInput.value = siteData.links.driveToon || '';
+            if (descorInput) descorInput.value = siteData.links.driveDescor || '';
+        }
+
+        function saveChannelLinks() {
+            const fb = document.getElementById('link-facebook-input').value.trim();
+            const line = document.getElementById('link-line-input').value.trim();
+            const ig = document.getElementById('link-instagram-input').value.trim();
+            const block = document.getElementById('link-drive-block-input').value.trim();
+            const toon = document.getElementById('link-drive-toon-input').value.trim();
+            const descor = document.getElementById('link-drive-descor-input').value.trim();
+
+            if (!siteData.links) siteData.links = {};
+            if (fb) siteData.links.facebook = fb;
+            if (line) siteData.links.line = line;
+            if (ig) siteData.links.instagram = ig;
+            if (block) siteData.links.driveBlock = block;
+            if (toon) siteData.links.driveToon = toon;
+            if (descor) siteData.links.driveDescor = descor;
+
+            try {
+                localStorage.setItem('pj_site_data', JSON.stringify(siteData));
+            } catch(e) {}
+
+            renderChannelLinks();
+            pushSharedState();
+            alert('บันทึกลิงก์ช่องทางเรียบร้อยแล้วค่ะ');
         }
 
         function openModal(id) {
@@ -833,6 +1013,7 @@
                             try {
                                 localStorage.setItem('pj_site_data', JSON.stringify(siteData));
                                 renderSiteElements();
+                                pushSharedState();
                                 alert('บันทึกรูปภาพเรียบร้อยแล้วค่ะ');
                                 
                                 ['logo', 'banner', 'prod1', 'prod2', 'prod3'].forEach(key => {
@@ -975,6 +1156,7 @@
             } catch(err) {
                 console.error(err);
             }
+            pushSharedState();
 
             alert('ส่งรีวิวเรียบร้อยแล้ว กรุณารอแอดมินอนุมัตินะคะ');
             closeModal('modal-review-form');
@@ -1006,6 +1188,7 @@
         function loadAdminData() {
             renderAdminQueueManage();
             renderAdminPendingReviews();
+            populateChannelLinksInputs();
         }
 
         function renderAdminQueueManage() {
@@ -1050,6 +1233,7 @@
 
             queues.unshift(newQ);
             localStorage.setItem('pj_queues', JSON.stringify(queues));
+            pushSharedState();
             nameInput.value = '';
             renderAdminQueueManage();
             renderQueues();
@@ -1060,6 +1244,7 @@
             if (q) {
                 q.name = newName;
                 localStorage.setItem('pj_queues', JSON.stringify(queues));
+                pushSharedState();
                 renderQueues();
             }
         }
@@ -1069,6 +1254,7 @@
             if (q) {
                 q.status = parseInt(newStatus);
                 localStorage.setItem('pj_queues', JSON.stringify(queues));
+                pushSharedState();
                 renderQueues();
             }
         }
@@ -1077,6 +1263,7 @@
             if (confirm('ต้องการลบคิวนี้ออกหรือไม่คะ?')) {
                 queues = queues.filter(item => item.id !== id);
                 localStorage.setItem('pj_queues', JSON.stringify(queues));
+                pushSharedState();
                 renderAdminQueueManage();
                 renderQueues();
             }
@@ -1123,6 +1310,7 @@
             if (r) {
                 r.approved = true;
                 localStorage.setItem('pj_reviews', JSON.stringify(reviews));
+                pushSharedState();
                 renderAdminPendingReviews();
                 renderReviews();
                 alert('อนุมัติรีวิวเรียบร้อยแล้วค่ะ');
@@ -1133,6 +1321,7 @@
             if (confirm('ปฏิเสธและลบรีวิวนี้หรือไม่?')) {
                 reviews = reviews.filter(item => item.id !== id);
                 localStorage.setItem('pj_reviews', JSON.stringify(reviews));
+                pushSharedState();
                 renderAdminPendingReviews();
             }
         }
