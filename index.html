@@ -17,7 +17,7 @@
                         'fredoka': ['Fredoka', 'sans-serif'],
                     },
                     colors: {
-                        'pj-bg': '#fffaf0',          /* ครีมนมพาสเทล */
+                        'pj-bg': '#fff5f7',          /* ครีมนมพาสเทลอมชมพู */
                         'pj-blue-light': '#ffccd5',  /* ชมพูอ่อนพาสเทล */
                         'pj-blue-main': '#ff85a2',   /* ชมพูสดใส */
                         'pj-blue-dark': '#705446',   /* น้ำตาลช็อกโกแลตนุ่มๆ */
@@ -35,7 +35,7 @@
         }
     </script>
     <style>
-        body { font-family: 'Mitr', sans-serif; background-color: #fffaf0; overflow-x: hidden; color: #705446; }
+        body { font-family: 'Mitr', sans-serif; background-color: #fff5f7; overflow-x: hidden; color: #705446; }
         .font-eng { font-family: 'Fredoka', sans-serif; }
         
         /* Custom UI Shapes matching Reference 2 */
@@ -97,8 +97,8 @@
 </head>
 <body class="antialiased relative selection:bg-pj-yellow-main selection:text-pj-blue-dark">
 
-    <!-- Audio Player Hidden Element -->
-    <iframe id="bg-music-iframe" style="display:none;" width="560" height="315" src="https://www.youtube.com/embed/l-fZh5Maq0k?enablejsapi=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <!-- Audio Player Hidden Element (YouTube Iframe with Loop API) -->
+    <iframe id="bg-music-iframe" style="display:none;" width="560" height="315" src="https://www.youtube.com/embed/BX7z7AvTCNw?enablejsapi=1&loop=1&playlist=BX7z7AvTCNw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
     <!-- Floating Music Toggle Button (ฝั่งซ้าย ขนาดเล็กลง) -->
     <button id="music-toggle-btn" onclick="toggleMusic()" class="fixed top-4 left-4 z-50 bg-pj-white border-2 border-pj-pink p-1.5 rounded-full shadow-lg hover:scale-110 transition-transform duration-300 flex items-center justify-center text-pj-pink group" title="เปิด/ปิดเพลง">
@@ -109,7 +109,7 @@
     </button>
 
     <!-- Admin Panel Floating Button Bottom-Left -->
-    <button onclick="openAdminAuthModal()" class="fixed bottom-4 left-4 z-50 bg-pj-blue-dark text-pj-white p-3 rounded-full shadow-lg hover:scale-105 transition-transform duration-300 flex items-center gap-1.5 text-xs font-bold border-2 border-pj-white">
+    <button onclick="openAdminAuthModal()" class="fixed bottom-4 left-4 z-50 bg-pj-pink text-pj-white p-3 rounded-full shadow-lg hover:scale-105 transition-transform duration-300 flex items-center gap-1.5 text-xs font-bold border-2 border-pj-white">
         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
         <span>หลังบ้าน</span>
     </button>
@@ -487,7 +487,7 @@
                 </div>
                 <div>
                     <label class="block text-xs font-bold mb-1">แนบรูปหลักฐานการซื้อขาย (รูปโปรไฟล์) *</label>
-                    <input type="file" id="review-proof-file" accept="image/*" required onchange="handleImageUpload(event)" class="w-full text-xs text-gray-500 file:mr-2 file:py-1 file:px-3 file:rounded-full file:border-0 file:text-xs file:font-semibold file:bg-pj-pink/20 file:text-pj-pink hover:file:bg-pj-pink/30">
+                    <input type="file" id="review-proof-file" accept="image/*" required class="w-full text-xs text-gray-500 file:mr-2 file:py-1 file:px-3 file:rounded-full file:border-0 file:text-xs file:font-semibold file:bg-pj-pink/20 file:text-pj-pink hover:file:bg-pj-pink/30">
                 </div>
                 <button type="submit" class="w-full bg-pj-pink text-pj-white font-bold py-2 rounded-xl text-xs hover:bg-pj-pink/80 transition shadow-sm mt-2">
                     ส่งรีวิวให้แอดมินตรวจสอบ
@@ -499,161 +499,169 @@
     <!-- Modal: รหัสผ่านเข้าหลังบ้าน Admin -->
     <div id="modal-admin-auth" class="modal inactive fixed inset-0 z-50 flex items-center justify-center p-4">
         <div class="absolute inset-0 bg-pj-blue-dark/50 backdrop-blur-sm" onclick="closeModal('modal-admin-auth')"></div>
-        <div class="modal-content relative bg-pj-white w-full max-w-xs rounded-[24px] p-6 shadow-xl border-4 border-pj-blue-dark text-center">
-            <h3 class="font-eng text-lg font-bold text-pj-blue-dark mb-1">Admin Login</h3>
+        <div class="modal-content relative bg-pj-white w-full max-w-xs rounded-[24px] p-6 shadow-xl border-4 border-pj-pink text-center">
+            <h3 class="font-eng text-lg font-bold text-pj-pink mb-1">Admin Login</h3>
             <p class="text-xs text-gray-500 mb-4">เข้าสู่ระบบหลังบ้านสำหรับแอดมิน</p>
             <div class="space-y-2 mb-3 text-left">
                 <div>
                     <label class="block text-[10px] font-bold text-pj-blue-dark mb-0.5">อีเมลแอดมิน</label>
-                    <input type="email" id="admin-email-input" value="" placeholder="กรอกอีเมลแอดมิน" class="w-full border-2 border-pj-pink/40 rounded-xl px-3 py-1.5 text-xs focus:outline-none focus:border-pj-blue-dark">
+                    <input type="email" id="admin-email-input" value="mean13ayu@gmail.com" placeholder="กรอกอีเมลแอดมิน" class="w-full border-2 border-pj-pink/40 rounded-xl px-3 py-1.5 text-xs focus:outline-none focus:border-pj-pink">
                 </div>
                 <div>
                     <label class="block text-[10px] font-bold text-pj-blue-dark mb-0.5">รหัสผ่าน</label>
-                    <input type="password" id="admin-pass-input" value="" placeholder="กรอกรหัสผ่าน" class="w-full border-2 border-pj-pink/40 rounded-xl px-3 py-1.5 text-xs focus:outline-none focus:border-pj-blue-dark">
+                    <input type="password" id="admin-pass-input" value="" placeholder="กรอกรหัสผ่าน" class="w-full border-2 border-pj-pink/40 rounded-xl px-3 py-1.5 text-xs focus:outline-none focus:border-pj-pink">
                 </div>
             </div>
-            <button onclick="checkAdminLogin()" class="w-full bg-pj-blue-dark text-white font-bold py-2 rounded-xl text-xs hover:bg-pj-blue-main transition shadow-md">
+            <button onclick="checkAdminLogin()" class="w-full bg-pj-pink text-white font-bold py-2 rounded-xl text-xs hover:bg-pj-blue-main transition shadow-md">
                 เข้าสู่ระบบ
             </button>
         </div>
     </div>
 
-    <!-- Modal: ระบบหลังบ้าน Admin Panel -->
+    <!-- Modal: ระบบหลังบ้าน Admin Panel (ปรับแต่งโทนชมพูพาสเทล น่ารัก ระเบียบเรียบร้อย + ปุ่มกากบาทมุมบนขวา) -->
     <div id="modal-admin-panel" class="modal inactive fixed inset-0 z-50 flex items-center justify-center p-4">
-        <div class="absolute inset-0 bg-pj-blue-dark/50 backdrop-blur-sm" onclick="closeModal('modal-admin-panel')"></div>
-        <div class="modal-content relative bg-pj-white w-full max-w-lg max-h-[90vh] overflow-y-auto rounded-[30px] p-6 shadow-xl border-4 border-pj-blue-dark">
-            <button onclick="closeModal('modal-admin-panel')" class="absolute top-4 right-4 text-pj-blue-dark hover:text-pj-pink">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        <div class="absolute inset-0 bg-pj-blue-dark/40 backdrop-blur-sm" onclick="closeModal('modal-admin-panel')"></div>
+        <div class="modal-content relative bg-pj-bg w-full max-w-xl max-h-[90vh] overflow-y-auto rounded-[32px] p-6 shadow-2xl border-4 border-pj-pink">
+            
+            <!-- ปุ่มกากบาทไว้มุมบนขวาของหน้าต่างแอดมินตามเงื่อนไข -->
+            <button onclick="closeModal('modal-admin-panel')" class="absolute top-4 right-4 bg-pj-pink text-pj-white p-1.5 rounded-full hover:bg-pj-blue-main hover:scale-110 transition-all z-20 shadow-md">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
             </button>
             
-            <h2 class="font-eng text-2xl font-bold text-pj-blue-dark mb-1 flex items-center gap-2">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
-                ระบบจัดการหลังบ้าน
-            </h2>
-            <p class="text-xs text-gray-500 mb-6">เลือกรูปจากอัลบั้มโทรศัพท์ ระบบจะอัปโหลดขึ้น Cloud อัตโนมัติ</p>
+            <div class="flex items-center gap-3 mb-2 border-b-2 border-pj-pink/30 pb-3">
+                <div class="w-10 h-10 rounded-2xl bg-pj-pink text-white flex items-center justify-center shadow-md">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                </div>
+                <div>
+                    <h2 class="font-eng text-2xl font-bold text-pj-blue-dark">Admin Dashboard</h2>
+                    <p class="text-xs text-pj-blue-dark/70 font-medium">จัดการระบบหลังบ้านร้าน Miori Shop ✨</p>
+                </div>
+            </div>
 
-            <div class="space-y-6">
-                <!-- 1. ส่วนเลือกอัปโหลดรูปภาพจากอัลบั้ม -->
-                <div class="bg-pj-bg p-4 rounded-2xl border border-pj-pink/40">
-                    <h3 class="font-bold text-sm text-pj-blue-dark mb-3 flex items-center gap-1.5">
-                        <svg class="w-4 h-4 text-pj-blue-main" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
-                        เลือกรูปภาพจากอัลบั้มโทรศัพท์
+            <div class="space-y-5 mt-4">
+                <!-- 1. ส่วนอัปโหลดรูปภาพทั้งหมด -->
+                <div class="bg-pj-white p-4 rounded-2xl border-2 border-pj-pink/40 shadow-sm">
+                    <h3 class="font-bold text-sm text-pj-blue-dark mb-3 flex items-center gap-2">
+                        <span class="w-3 h-3 rounded-full bg-pj-pink inline-block"></span>
+                        จัดการรูปภาพร้านค้า
                     </h3>
                     <div class="space-y-3 text-xs">
-                        <div class="bg-white p-3 rounded-xl border border-pj-pink/30 space-y-1.5">
+                        <div class="bg-pj-bg p-3 rounded-xl border border-pj-pink/30 space-y-1.5">
                             <label class="block font-bold text-pj-blue-dark">1. รูปโลโก้ (โพลารอยด์):</label>
                             <input type="file" id="file-input-logo" accept="image/*" onchange="previewImage(event, 'preview-logo')" class="w-full text-xs text-gray-500 file:mr-2 file:py-1 file:px-3 file:rounded-full file:border-0 file:text-xs file:font-semibold file:bg-pj-pink/20 file:text-pj-blue-dark hover:file:bg-pj-pink">
                             <img id="preview-logo" class="w-16 h-16 object-cover rounded-lg border hidden mt-1">
                         </div>
 
-                        <div class="bg-white p-3 rounded-xl border border-pj-pink/30 space-y-1.5">
+                        <div class="bg-pj-bg p-3 rounded-xl border border-pj-pink/30 space-y-1.5">
                             <label class="block font-bold text-pj-blue-dark">2. รูปแบนเนอร์ (2400x800):</label>
                             <input type="file" id="file-input-banner" accept="image/*" onchange="previewImage(event, 'preview-banner')" class="w-full text-xs text-gray-500 file:mr-2 file:py-1 file:px-3 file:rounded-full file:border-0 file:text-xs file:font-semibold file:bg-pj-pink/20 file:text-pj-blue-dark hover:file:bg-pj-pink">
                             <img id="preview-banner" class="w-32 h-12 object-cover rounded-lg border hidden mt-1">
                         </div>
 
-                        <div class="bg-white p-3 rounded-xl border border-pj-pink/30 space-y-1.5">
-                            <label class="block font-bold text-pj-blue-dark">3. รูปสินค้า 1 (Block):</label>
-                            <input type="file" id="file-input-prod1" accept="image/*" onchange="previewImage(event, 'preview-prod1')" class="w-full text-xs text-gray-500 file:mr-2 file:py-1 file:px-3 file:rounded-full file:border-0 file:text-xs file:font-semibold file:bg-pj-pink/20 file:text-pj-blue-dark hover:file:bg-pj-pink">
-                            <img id="preview-prod1" class="w-16 h-16 object-cover rounded-lg border hidden mt-1">
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-2">
+                            <div class="bg-pj-bg p-2.5 rounded-xl border border-pj-pink/30 space-y-1">
+                                <label class="block font-bold text-pj-blue-dark text-[11px]">3. รูป Block:</label>
+                                <input type="file" id="file-input-prod1" accept="image/*" onchange="previewImage(event, 'preview-prod1')" class="w-full text-[10px] text-gray-500 file:mr-1 file:py-0.5 file:px-2 file:rounded-full file:border-0 file:bg-pj-pink/20">
+                                <img id="preview-prod1" class="w-12 h-12 object-cover rounded-lg border hidden mt-1">
+                            </div>
+
+                            <div class="bg-pj-bg p-2.5 rounded-xl border border-pj-pink/30 space-y-1">
+                                <label class="block font-bold text-pj-blue-dark text-[11px]">4. รูป Toon:</label>
+                                <input type="file" id="file-input-prod2" accept="image/*" onchange="previewImage(event, 'preview-prod2')" class="w-full text-[10px] text-gray-500 file:mr-1 file:py-0.5 file:px-2 file:rounded-full file:border-0 file:bg-pj-pink/20">
+                                <img id="preview-prod2" class="w-12 h-12 object-cover rounded-lg border hidden mt-1">
+                            </div>
+
+                            <div class="bg-pj-bg p-2.5 rounded-xl border border-pj-pink/30 space-y-1">
+                                <label class="block font-bold text-pj-blue-dark text-[11px]">5. รูป Descor:</label>
+                                <input type="file" id="file-input-prod3" accept="image/*" onchange="previewImage(event, 'preview-prod3')" class="w-full text-[10px] text-gray-500 file:mr-1 file:py-0.5 file:px-2 file:rounded-full file:border-0 file:bg-pj-pink/20">
+                                <img id="preview-prod3" class="w-12 h-12 object-cover rounded-lg border hidden mt-1">
+                            </div>
                         </div>
 
-                        <div class="bg-white p-3 rounded-xl border border-pj-pink/30 space-y-1.5">
-                            <label class="block font-bold text-pj-blue-dark">4. รูปสินค้า 2 (Toon):</label>
-                            <input type="file" id="file-input-prod2" accept="image/*" onchange="previewImage(event, 'preview-prod2')" class="w-full text-xs text-gray-500 file:mr-2 file:py-1 file:px-3 file:rounded-full file:border-0 file:text-xs file:font-semibold file:bg-pj-pink/20 file:text-pj-blue-dark hover:file:bg-pj-pink">
-                            <img id="preview-prod2" class="w-16 h-16 object-cover rounded-lg border hidden mt-1">
-                        </div>
-
-                        <div class="bg-white p-3 rounded-xl border border-pj-pink/30 space-y-1.5">
-                            <label class="block font-bold text-pj-blue-dark">5. รูปสินค้า 3 (Descor):</label>
-                            <input type="file" id="file-input-prod3" accept="image/*" onchange="previewImage(event, 'preview-prod3')" class="w-full text-xs text-gray-500 file:mr-2 file:py-1 file:px-3 file:rounded-full file:border-0 file:text-xs file:font-semibold file:bg-pj-pink/20 file:text-pj-blue-dark hover:file:bg-pj-pink">
-                            <img id="preview-prod3" class="w-16 h-16 object-cover rounded-lg border hidden mt-1">
-                        </div>
-
-                        <button id="btn-save-images" onclick="saveAllImageChanges()" class="w-full bg-pj-pink text-pj-white font-bold py-2.5 rounded-xl text-xs hover:bg-pj-blue-main transition shadow-md mt-3 flex items-center justify-center gap-1">
+                        <button onclick="saveAllImageChanges()" class="w-full bg-pj-pink text-pj-white font-bold py-2.5 rounded-xl text-xs hover:bg-pj-blue-main transition shadow-md mt-3 flex items-center justify-center gap-1">
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path d="M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3 3m0 0l-3-3m3 3V4"/></svg>
-                            <span id="btn-save-text">อัปโหลดและบันทึกรูปภาพขึ้น Cloud</span>
+                            <span>บันทึกการเปลี่ยนรูปภาพทั้งหมด</span>
                         </button>
                     </div>
                 </div>
 
-                <!-- 1.5 จัดการลิงก์ช่องทางต่างๆ -->
-                <div class="bg-pj-bg p-4 rounded-2xl border border-pj-pink/40">
-                    <h3 class="font-bold text-sm text-pj-blue-dark mb-3 flex items-center gap-1.5">
-                        <svg class="w-4 h-4 text-pj-blue-main" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path d="M13.828 10.172a4 4 0 010 5.656l-4 4a4 4 0 01-5.656-5.656l1.5-1.5M10.172 13.828a4 4 0 010-5.656l4-4a4 4 0 015.656 5.656l-1.5 1.5"/></svg>
-                        แก้ไขลิงก์ช่องทางต่างๆ
+                <!-- 1.5 จัดการลิงก์ช่องทางต่างๆ และลิงก์ Drive สินค้าแต่ละช่อง -->
+                <div class="bg-pj-white p-4 rounded-2xl border-2 border-pj-pink/40 shadow-sm">
+                    <h3 class="font-bold text-sm text-pj-blue-dark mb-3 flex items-center gap-2">
+                        <span class="w-3 h-3 rounded-full bg-pj-yellow-main inline-block"></span>
+                        แก้ไขลิงก์ช่องทางติดต่อ & Google Drive
                     </h3>
                     <div class="space-y-2 text-xs">
-                        <div>
-                            <label class="block font-bold text-pj-blue-dark mb-1">ลิงก์ Facebook</label>
-                            <input type="text" id="link-facebook-input" placeholder="https://facebook.com/..." class="w-full border border-pj-pink/40 rounded-lg px-2 py-1.5 bg-white">
+                        <div class="grid grid-cols-2 gap-2">
+                            <div>
+                                <label class="block font-bold text-pj-blue-dark mb-1">ลิงก์ Facebook</label>
+                                <input type="text" id="link-facebook-input" placeholder="https://facebook.com/..." class="w-full border border-pj-pink/40 rounded-xl px-2.5 py-1.5 bg-pj-bg">
+                            </div>
+                            <div>
+                                <label class="block font-bold text-pj-blue-dark mb-1">ลิงก์ Line</label>
+                                <input type="text" id="link-line-input" placeholder="https://lin.ee/..." class="w-full border border-pj-pink/40 rounded-xl px-2.5 py-1.5 bg-pj-bg">
+                            </div>
                         </div>
-                        <div>
-                            <label class="block font-bold text-pj-blue-dark mb-1">ลิงก์ Line</label>
-                            <input type="text" id="link-line-input" placeholder="https://lin.ee/..." class="w-full border border-pj-pink/40 rounded-lg px-2 py-1.5 bg-white">
+                        <div class="pt-2 border-t border-pj-pink/20 space-y-2">
+                            <div>
+                                <label class="block font-bold text-pj-blue-dark mb-1">ลิงก์ Google Drive - ช่อง 1 (Block)</label>
+                                <input type="text" id="link-drive-block-input" placeholder="https://drive.google.com/..." class="w-full border border-pj-pink/40 rounded-xl px-2.5 py-1.5 bg-pj-bg">
+                            </div>
+                            <div>
+                                <label class="block font-bold text-pj-blue-dark mb-1">ลิงก์ Google Drive - ช่อง 2 (Toon)</label>
+                                <input type="text" id="link-drive-toon-input" placeholder="https://drive.google.com/..." class="w-full border border-pj-pink/40 rounded-xl px-2.5 py-1.5 bg-pj-bg">
+                            </div>
+                            <div>
+                                <label class="block font-bold text-pj-blue-dark mb-1">ลิงก์ Google Drive - ช่อง 3 (Descor)</label>
+                                <input type="text" id="link-drive-descor-input" placeholder="https://drive.google.com/..." class="w-full border border-pj-pink/40 rounded-xl px-2.5 py-1.5 bg-pj-bg">
+                            </div>
                         </div>
-                        <div>
-                            <label class="block font-bold text-pj-blue-dark mb-1">ลิงก์ Instagram (สำรอง ยังไม่แสดงผล)</label>
-                            <input type="text" id="link-instagram-input" placeholder="https://instagram.com/..." class="w-full border border-pj-pink/40 rounded-lg px-2 py-1.5 bg-white">
-                        </div>
-                        <div class="pt-2 border-t border-pj-pink/20">
-                            <label class="block font-bold text-pj-blue-dark mb-1">ลิงก์ไดรฟ์ Block</label>
-                            <input type="text" id="link-drive-block-input" placeholder="https://drive.google.com/..." class="w-full border border-pj-pink/40 rounded-lg px-2 py-1.5 bg-white">
-                        </div>
-                        <div>
-                            <label class="block font-bold text-pj-blue-dark mb-1">ลิงก์ไดรฟ์ Toon</label>
-                            <input type="text" id="link-drive-toon-input" placeholder="https://drive.google.com/..." class="w-full border border-pj-pink/40 rounded-lg px-2 py-1.5 bg-white">
-                        </div>
-                        <div>
-                            <label class="block font-bold text-pj-blue-dark mb-1">ลิงก์ไดรฟ์ Descor</label>
-                            <input type="text" id="link-drive-descor-input" placeholder="https://drive.google.com/..." class="w-full border border-pj-pink/40 rounded-lg px-2 py-1.5 bg-white">
-                        </div>
-                        <button onclick="saveChannelLinks()" class="w-full bg-pj-pink text-pj-white font-bold py-2 rounded-xl text-xs hover:bg-pj-blue-main transition shadow-sm mt-1">
-                            บันทึกลิงก์ช่องทาง
+                        <button onclick="saveChannelLinks()" class="w-full bg-pj-yellow-main text-pj-blue-dark font-bold py-2 rounded-xl text-xs hover:bg-yellow-400 transition shadow-sm mt-2">
+                            บันทึกลิงก์ช่องทางและ Google Drive
                         </button>
                     </div>
                 </div>
 
                 <!-- 2. จัดการคิวงานลูกค้า -->
-                <div class="bg-pj-bg p-4 rounded-2xl border border-pj-pink/40">
-                    <h3 class="font-bold text-sm text-pj-blue-dark mb-3 flex items-center gap-1.5">
-                        <svg class="w-4 h-4 text-pj-blue-main" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                <div class="bg-pj-white p-4 rounded-2xl border-2 border-pj-pink/40 shadow-sm">
+                    <h3 class="font-bold text-sm text-pj-blue-dark mb-3 flex items-center gap-2">
+                        <span class="w-3 h-3 rounded-full bg-green-400 inline-block"></span>
                         เพิ่ม / แก้ไข / ลด คิวของลูกค้า
                     </h3>
                     
                     <div class="flex gap-2 mb-3">
-                        <input type="text" id="new-client-name" placeholder="ชื่อลูกค้า/ชื่อร้าน..." class="flex-1 bg-white border border-pj-pink/40 rounded-xl px-3 py-1.5 text-xs">
-                        <select id="new-client-status" class="bg-white border border-pj-pink/40 rounded-xl px-2 py-1.5 text-xs font-bold text-pj-blue-dark">
+                        <input type="text" id="new-client-name" placeholder="ชื่อลูกค้า/ชื่อร้าน..." class="flex-1 bg-pj-bg border border-pj-pink/40 rounded-xl px-3 py-1.5 text-xs">
+                        <select id="new-client-status" class="bg-pj-bg border border-pj-pink/40 rounded-xl px-2 py-1.5 text-xs font-bold text-pj-blue-dark">
                             <option value="0">0% (รอบรีพงาน)</option>
                             <option value="25">25% (บรีพงานแล้ว)</option>
                             <option value="50">50% (กำลังทำงาน)</option>
                             <option value="75">75% (รอเช็คงาน)</option>
                             <option value="100">100% (ส่งงานแล้ว)</option>
                         </select>
-                        <button onclick="addNewQueueItem()" class="bg-green-500 text-white font-bold px-3 py-1.5 rounded-xl text-xs hover:bg-green-600 transition shrink-0">
+                        <button onclick="addNewQueueItem()" class="bg-green-500 text-white font-bold px-3 py-1.5 rounded-xl text-xs hover:bg-green-600 transition shrink-0 shadow-sm">
                             + เพิ่มคิว
                         </button>
                     </div>
 
-                    <div id="admin-queue-manage-list" class="space-y-2 max-h-48 overflow-y-auto">
+                    <div id="admin-queue-manage-list" class="space-y-2 max-h-48 overflow-y-auto pr-1">
                         <!-- Loaded dynamically -->
                     </div>
                 </div>
 
                 <!-- 3. อนุมัติรีวิวลูกค้า -->
-                <div class="bg-pj-bg p-4 rounded-2xl border border-pj-pink/50">
-                    <h3 class="font-bold text-sm text-pj-pink mb-3 flex items-center gap-1.5">
-                        <svg class="w-4 h-4 text-pj-pink" fill="currentColor" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                <div class="bg-pj-white p-4 rounded-2xl border-2 border-pj-pink/40 shadow-sm">
+                    <h3 class="font-bold text-sm text-pj-pink mb-3 flex items-center gap-2">
+                        <span class="w-3 h-3 rounded-full bg-pj-pink inline-block"></span>
                         อนุมัติรีวิวจากลูกค้า
                     </h3>
                     
-                    <div id="admin-pending-reviews-list" class="space-y-3 max-h-56 overflow-y-auto">
+                    <div id="admin-pending-reviews-list" class="space-y-3 max-h-56 overflow-y-auto pr-1">
                         <!-- Loaded dynamically -->
                     </div>
                 </div>
 
                 <!-- 4. ตั้งค่าเปลี่ยนรหัสผ่านแอดมิน -->
-                <div class="bg-pj-yellow-light/40 p-4 rounded-2xl border border-pj-yellow-main">
+                <div class="bg-pj-yellow-light/60 p-4 rounded-2xl border-2 border-pj-yellow-main shadow-sm">
                     <h3 class="font-bold text-sm text-pj-blue-dark mb-2 flex items-center gap-1.5">
                         <svg class="w-4 h-4 text-pj-blue-dark" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 0121 9z"/></svg>
                         ตั้งค่าเปลี่ยนรหัสผ่านแอดมิน
@@ -662,7 +670,7 @@
                         <input type="password" id="change-pass-new" placeholder="รหัสผ่านใหม่..." class="bg-white border border-pj-pink/40 rounded-xl px-3 py-1.5 text-xs">
                         <input type="password" id="change-pass-confirm" placeholder="ยืนยันรหัสผ่านใหม่..." class="bg-white border border-pj-pink/40 rounded-xl px-3 py-1.5 text-xs">
                     </div>
-                    <button onclick="changeAdminPassword()" class="w-full bg-pj-blue-dark text-white font-bold py-1.5 rounded-xl text-xs hover:bg-pj-blue-main transition">
+                    <button onclick="changeAdminPassword()" class="w-full bg-pj-blue-dark text-white font-bold py-2 rounded-xl text-xs hover:bg-pj-blue-main transition shadow-sm">
                         บันทึกรหัสผ่านใหม่
                     </button>
                 </div>
@@ -674,7 +682,6 @@
     <script>
         const ADMIN_EMAIL = 'mean13ayu@gmail.com';
         let currentAdminPass = '1234';
-        const IMGUR_CLIENT_ID = 'e7f2238472530a6'; // Imgur Public Free Client Key
 
         if (localStorage.getItem('pj_admin_pass')) {
             currentAdminPass = localStorage.getItem('pj_admin_pass');
@@ -708,11 +715,93 @@
 
         let reviews = [];
 
+        /* Audio Music Toggle logic with loop support */
+        let isPlayingMusic = false;
+        function toggleMusic() {
+            const iframe = document.getElementById('bg-music-iframe');
+            const statusDot = document.getElementById('music-status-dot');
+            if (!iframe) return;
+
+            if (!isPlayingMusic) {
+                iframe.contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
+                isPlayingMusic = true;
+                if(statusDot) {
+                    statusDot.classList.remove('bg-gray-400');
+                    statusDot.classList.add('bg-green-500');
+                }
+            } else {
+                iframe.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
+                isPlayingMusic = false;
+                if(statusDot) {
+                    statusDot.classList.remove('bg-green-500');
+                    statusDot.classList.add('bg-gray-400');
+                }
+            }
+        }
+
+        /* Broadcast Channel & Storage Sync */
+        let broadcastChan = null;
+
+        function initSharedDb() {
+            try {
+                if ('BroadcastChannel' in window) {
+                    broadcastChan = new BroadcastChannel('miori_shop_channel');
+                    broadcastChan.onmessage = (event) => {
+                        if (event.data) {
+                            if (event.data.siteData) siteData = event.data.siteData;
+                            if (event.data.queues) queues = event.data.queues;
+                            if (event.data.reviews) reviews = event.data.reviews;
+
+                            renderSiteElements();
+                            renderQueues();
+                            renderReviews();
+
+                            if (document.getElementById('modal-admin-panel') && document.getElementById('modal-admin-panel').classList.contains('active')) {
+                                renderAdminQueueManage();
+                                renderAdminPendingReviews();
+                            }
+                        }
+                    };
+                }
+            } catch (e) {
+                console.error("BroadcastChannel fail", e);
+            }
+
+            window.addEventListener('storage', (e) => {
+                if (e.key === 'pj_site_data' && e.newValue) {
+                    try { siteData = JSON.parse(e.newValue); renderSiteElements(); } catch(err){}
+                }
+                if (e.key === 'pj_queues' && e.newValue) {
+                    try { queues = JSON.parse(e.newValue); renderQueues(); } catch(err){}
+                }
+                if (e.key === 'pj_reviews' && e.newValue) {
+                    try { reviews = JSON.parse(e.newValue); renderReviews(); } catch(err){}
+                }
+            });
+        }
+
+        function pushSharedState() {
+            if (broadcastChan) {
+                try {
+                    broadcastChan.postMessage({ siteData: siteData, queues: queues, reviews: reviews });
+                } catch (e) {}
+            }
+        }
+
         window.addEventListener('DOMContentLoaded', () => {
             try {
                 const savedSiteData = localStorage.getItem('pj_site_data');
                 if (savedSiteData) siteData = JSON.parse(savedSiteData);
-
+                if (!siteData.links) {
+                    siteData.links = {
+                        facebook: "https://www.facebook.com/profile.php?id=61591413135110",
+                        line: "https://lin.ee/XkF46in",
+                        instagram: "https://www.instagram.com/pinkjulie.land",
+                        driveBlock: "https://drive.google.com/drive/folders/10wVjpHKCr8rMZ-UoCd5G_ALc13AUC1Qk",
+                        driveToon: "https://drive.google.com/drive/folders/1T36yZKLHN5huKfwu1NYW_PVLLsswHTiD",
+                        driveDescor: "https://drive.google.com/drive/folders/1YLsW06GXE_ENus4ad8AUNU4FEM74Z2vl"
+                    };
+                }
                 const savedQueues = localStorage.getItem('pj_queues');
                 if (savedQueues) queues = JSON.parse(savedQueues);
 
@@ -725,6 +814,8 @@
             renderSiteElements();
             renderQueues();
             renderReviews();
+
+            initSharedDb();
         });
 
         function renderSiteElements() {
@@ -757,26 +848,40 @@
 
         function populateChannelLinksInputs() {
             if (!siteData.links) return;
-            document.getElementById('link-facebook-input').value = siteData.links.facebook || '';
-            document.getElementById('link-line-input').value = siteData.links.line || '';
-            document.getElementById('link-instagram-input').value = siteData.links.instagram || '';
-            document.getElementById('link-drive-block-input').value = siteData.links.driveBlock || '';
-            document.getElementById('link-drive-toon-input').value = siteData.links.driveToon || '';
-            document.getElementById('link-drive-descor-input').value = siteData.links.driveDescor || '';
+            const fbInput = document.getElementById('link-facebook-input');
+            const lineInput = document.getElementById('link-line-input');
+            const blockInput = document.getElementById('link-drive-block-input');
+            const toonInput = document.getElementById('link-drive-toon-input');
+            const descorInput = document.getElementById('link-drive-descor-input');
+
+            if (fbInput) fbInput.value = siteData.links.facebook || '';
+            if (lineInput) lineInput.value = siteData.links.line || '';
+            if (blockInput) blockInput.value = siteData.links.driveBlock || '';
+            if (toonInput) toonInput.value = siteData.links.driveToon || '';
+            if (descorInput) descorInput.value = siteData.links.driveDescor || '';
         }
 
         function saveChannelLinks() {
-            siteData.links = siteData.links || {};
-            siteData.links.facebook = document.getElementById('link-facebook-input').value.trim();
-            siteData.links.line = document.getElementById('link-line-input').value.trim();
-            siteData.links.instagram = document.getElementById('link-instagram-input').value.trim();
-            siteData.links.driveBlock = document.getElementById('link-drive-block-input').value.trim();
-            siteData.links.driveToon = document.getElementById('link-drive-toon-input').value.trim();
-            siteData.links.driveDescor = document.getElementById('link-drive-descor-input').value.trim();
+            const fb = document.getElementById('link-facebook-input').value.trim();
+            const line = document.getElementById('link-line-input').value.trim();
+            const block = document.getElementById('link-drive-block-input').value.trim();
+            const toon = document.getElementById('link-drive-toon-input').value.trim();
+            const descor = document.getElementById('link-drive-descor-input').value.trim();
 
-            localStorage.setItem('pj_site_data', JSON.stringify(siteData));
+            if (!siteData.links) siteData.links = {};
+            if (fb) siteData.links.facebook = fb;
+            if (line) siteData.links.line = line;
+            if (block) siteData.links.driveBlock = block;
+            if (toon) siteData.links.driveToon = toon;
+            if (descor) siteData.links.driveDescor = descor;
+
+            try {
+                localStorage.setItem('pj_site_data', JSON.stringify(siteData));
+            } catch(e) {}
+
             renderChannelLinks();
-            alert('บันทึกลิงก์เรียบร้อยแล้ว');
+            pushSharedState();
+            alert('บันทึกลิงก์เรียบร้อยแล้วค่ะ');
         }
 
         function openModal(id) {
@@ -821,11 +926,20 @@
             const newPass = document.getElementById('change-pass-new').value.trim();
             const confirmPass = document.getElementById('change-pass-confirm').value.trim();
 
-            if (!newPass) return alert('กรุณากรอกรหัสผ่านใหม่ด้วยนะคะ');
-            if (newPass !== confirmPass) return alert('รหัสผ่านใหม่และรหัสผ่านยืนยันไม่ตรงกันค่ะ');
+            if (!newPass) {
+                alert('กรุณากรอกรหัสผ่านใหม่ด้วยนะคะ');
+                return;
+            }
+
+            if (newPass !== confirmPass) {
+                alert('รหัสผ่านใหม่และรหัสผ่านยืนยันไม่ตรงกันค่ะ');
+                return;
+            }
 
             currentAdminPass = newPass;
             localStorage.setItem('pj_admin_pass', newPass);
+            document.getElementById('change-pass-new').value = '';
+            document.getElementById('change-pass-confirm').value = '';
             alert('เปลี่ยนรหัสผ่านสำเร็จเรียบร้อยค่ะ!');
         }
 
@@ -842,141 +956,123 @@
             }
         }
 
-        // ฟังก์ชันช่วยอัปโหลดไฟล์ขึ้น Cloud ฟรี (Imgur API)
-        async function uploadFileToCloud(file) {
-            if (!file) return null;
-            const formData = new FormData();
-            formData.append('image', file);
-
-            try {
-                const res = await fetch('https://api.imgur.com/3/image', {
-                    method: 'POST',
-                    headers: {
-                        Authorization: 'Client-ID ' + IMGUR_CLIENT_ID
-                    },
-                    body: formData
-                });
-                const data = await res.json();
-                if (data.success) {
-                    return data.data.link;
-                } else {
-                    return null;
-                }
-            } catch(err) {
-                console.error("Cloud Upload Error:", err);
-                return null;
+        /* ฟังก์ชันบีบอัดรูปภาพลง Canvas เพื่อประหยัดพื้นที่ Storage แก้ปัญหารูปหายเมื่อสลับเครื่อง */
+        function compressAndProcessFile(file, maxWidth, maxHeight, callback) {
+            if (!file) {
+                callback(null);
+                return;
             }
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const img = new Image();
+                img.onload = function() {
+                    const canvas = document.createElement('canvas');
+                    let width = img.width;
+                    let height = img.height;
+
+                    if (width > maxWidth) {
+                        height = Math.round((height * maxWidth) / width);
+                        width = maxWidth;
+                    }
+                    if (height > maxHeight) {
+                        width = Math.round((width * maxHeight) / height);
+                        height = maxHeight;
+                    }
+
+                    canvas.width = width;
+                    canvas.height = height;
+
+                    const ctx = canvas.getContext('2d');
+                    ctx.drawImage(img, 0, 0, width, height);
+                    const base64Res = canvas.toDataURL('image/jpeg', 0.85);
+                    callback(base64Res);
+                };
+                img.src = e.target.result;
+            };
+            reader.readAsDataURL(file);
         }
 
-        async function saveAllImageChanges() {
-            const btnText = document.getElementById('btn-save-text');
+        function saveAllImageChanges() {
             const logoFile = document.getElementById('file-input-logo').files[0];
             const bannerFile = document.getElementById('file-input-banner').files[0];
             const prod1File = document.getElementById('file-input-prod1').files[0];
             const prod2File = document.getElementById('file-input-prod2').files[0];
             const prod3File = document.getElementById('file-input-prod3').files[0];
 
-            if (!logoFile && !bannerFile && !prod1File && !prod2File && !prod3File) {
-                alert('กรุณาเลือกไฟล์รูปภาพจากอัลบั้มก่อนกดบันทึกนะคะ');
+            let tasks = [
+                { file: logoFile, w: 400, h: 400, apply: (res) => siteData.logoUrl = res },
+                { file: bannerFile, w: 1200, h: 400, apply: (res) => siteData.bannerUrl = res },
+                { file: prod1File, w: 800, h: 800, apply: (res) => siteData.products[0].img = res },
+                { file: prod2File, w: 800, h: 800, apply: (res) => siteData.products[1].img = res },
+                { file: prod3File, w: 800, h: 800, apply: (res) => siteData.products[2].img = res }
+            ];
+
+            let activeTasks = tasks.filter(t => t.file);
+
+            if (activeTasks.length === 0) {
+                alert('กรุณาเลือกไฟล์รูปภาพที่ต้องการเปลี่ยนก่อนนะคะ');
                 return;
             }
 
-            btnText.innerText = "กำลังอัปโหลดรูปขึ้น Cloud...";
-
-            try {
-                if (logoFile) {
-                    const url = await uploadFileToCloud(logoFile);
-                    if (url) siteData.logoUrl = url;
-                }
-                if (bannerFile) {
-                    const url = await uploadFileToCloud(bannerFile);
-                    if (url) siteData.bannerUrl = url;
-                }
-                if (prod1File) {
-                    const url = await uploadFileToCloud(prod1File);
-                    if (url) siteData.products[0].img = url;
-                }
-                if (prod2File) {
-                    const url = await uploadFileToCloud(prod2File);
-                    if (url) siteData.products[1].img = url;
-                }
-                if (prod3File) {
-                    const url = await uploadFileToCloud(prod3File);
-                    if (url) siteData.products[2].img = url;
-                }
-
-                localStorage.setItem('pj_site_data', JSON.stringify(siteData));
-                renderSiteElements();
-                alert('อัปโหลดและบันทึกรูปภาพขึ้น Cloud เรียบร้อยแล้วค่ะ!');
-
-                ['logo', 'banner', 'prod1', 'prod2', 'prod3'].forEach(key => {
-                    const fileIn = document.getElementById(`file-input-${key}`);
-                    const prevImg = document.getElementById(`preview-${key}`);
-                    if (fileIn) fileIn.value = '';
-                    if (prevImg) prevImg.classList.add('hidden');
+            let completed = 0;
+            activeTasks.forEach(task => {
+                compressAndProcessFile(task.file, task.w, task.h, (base64Res) => {
+                    if (base64Res) {
+                        task.apply(base64Res);
+                    }
+                    completed++;
+                    if (completed === activeTasks.length) {
+                        try {
+                            localStorage.setItem('pj_site_data', JSON.stringify(siteData));
+                        } catch(e) {
+                            console.error('Storage quota exceeded', e);
+                        }
+                        renderSiteElements();
+                        pushSharedState();
+                        alert('บันทึกรูปภาพทั้งหมดเรียบร้อยแล้วค่ะ!');
+                    }
                 });
-            } catch (err) {
-                alert('เกิดข้อผิดพลาดในการอัปโหลดภาพ กรุณาลองใหม่อีกครั้งนะคะ');
-            } finally {
-                btnText.innerText = "อัปโหลดและบันทึกรูปภาพขึ้น Cloud";
-            }
+            });
         }
 
-        function getStatusText(status) {
-            switch (parseInt(status)) {
-                case 0: return "รอบรีพงาน 0%";
-                case 25: return "บรีพงานแล้ว 25%";
-                case 50: return "กำลังทำงาน 50%";
-                case 75: return "รอเช็คงาน 75%";
-                case 100: return "ส่งงานแล้ว 100%";
-                default: return status + "%";
-            }
+        function loadAdminData() {
+            populateChannelLinksInputs();
+            renderAdminQueueManage();
+            renderAdminPendingReviews();
         }
 
-        function getStatusBadgeColor(status) {
-            switch (parseInt(status)) {
-                case 0: return "bg-gray-100 text-gray-600 border-gray-300";
-                case 25: return "bg-pink-50 text-pink-500 border-pink-200";
-                case 50: return "bg-yellow-50 text-yellow-700 border-yellow-300";
-                case 75: return "bg-pink-100 text-pink-600 border-pink-300";
-                case 100: return "bg-green-50 text-green-600 border-green-300";
-                default: return "bg-pj-bg text-pj-blue-dark border-pj-pink";
-            }
-        }
-
-        function renderQueues(filterText = '') {
+        /* Queue Functions */
+        function renderQueues(filter = '') {
             const container = document.getElementById('queue-list-container');
             if(!container) return;
             container.innerHTML = '';
 
-            const filtered = queues.filter(q => q.name.toLowerCase().includes(filterText.toLowerCase()));
+            const filtered = queues.filter(q => q.name.toLowerCase().includes(filter.toLowerCase()));
 
             if (filtered.length === 0) {
-                container.innerHTML = `<p class="text-xs text-center text-gray-400 py-4">ไม่พบข้อมูลคิวที่คุณค้นหา</p>`;
+                container.innerHTML = `<p class="text-xs text-center text-gray-400 py-4">ไม่พบคิวงานตามชื่อที่ค้นหา</p>`;
                 return;
             }
 
             filtered.forEach(q => {
-                const badgeColor = getStatusBadgeColor(q.status);
-                const statusText = getStatusText(q.status);
+                let badgeColor = "bg-gray-200 text-gray-600";
+                if(q.status == 25) badgeColor = "bg-pink-100 text-pink-600";
+                if(q.status == 50) badgeColor = "bg-yellow-100 text-yellow-700";
+                if(q.status == 75) badgeColor = "bg-pink-200 text-pink-700";
+                if(q.status == 100) badgeColor = "bg-green-100 text-green-700";
 
-                const itemHtml = `
-                    <div class="bg-pj-bg p-3 rounded-2xl border border-pj-pink/30 shadow-sm space-y-1.5">
-                        <div class="flex justify-between items-center text-xs">
-                            <span class="font-bold text-pj-blue-dark flex items-center gap-1">
-                                <span class="w-2 h-2 rounded-full bg-pj-pink"></span>
-                                ${q.name}
-                            </span>
-                            <span class="text-[10px] font-bold px-2 py-0.5 rounded-full border ${badgeColor}">
-                                ${statusText}
-                            </span>
-                        </div>
-                        <div class="w-full bg-white rounded-full h-3 border border-pj-pink/40 p-0.5 relative overflow-hidden">
-                            <div class="bg-gradient-to-r from-pj-pink via-pj-yellow-main to-pj-blue-main h-full rounded-full transition-all duration-500" style="width: ${q.status}%"></div>
-                        </div>
+                const div = document.createElement('div');
+                div.className = "bg-pj-bg p-3 rounded-2xl border border-pj-pink/30 flex flex-col gap-1.5";
+                div.innerHTML = `
+                    <div class="flex justify-between items-center">
+                        <span class="font-bold text-xs text-pj-blue-dark">${q.name}</span>
+                        <span class="text-[10px] font-bold px-2 py-0.5 rounded-full ${badgeColor}">${q.status}%</span>
+                    </div>
+                    <div class="w-full bg-gray-200 h-2 rounded-full overflow-hidden">
+                        <div class="bg-pj-pink h-full transition-all duration-500" style="width: ${q.status}%"></div>
                     </div>
                 `;
-                container.innerHTML += itemHtml;
+                container.appendChild(div);
             });
         }
 
@@ -985,220 +1081,194 @@
             renderQueues(val);
         }
 
-        function renderReviews() {
-            const container = document.getElementById('reviews-display-list');
-            if(!container) return;
-            container.innerHTML = '';
-
-            const approvedReviews = reviews.filter(r => r.approved);
-
-            if (approvedReviews.length === 0) {
-                container.innerHTML = `<p class="text-xs text-center text-gray-400 py-4">ยังไม่มีรีวิวในขณะนี้</p>`;
-                return;
-            }
-
-            approvedReviews.forEach(r => {
-                const html = `
-                    <div class="bg-pj-bg p-3 rounded-2xl border border-pj-pink/30 flex gap-3 items-start shadow-sm">
-                        <img src="${r.proofImg}" alt="ภาพลูกค้า" class="w-10 h-10 rounded-full object-cover border-2 border-pj-pink shrink-0 shadow-sm">
-                        <div class="flex-1 text-xs">
-                            <div class="flex justify-between items-center mb-1">
-                                <span class="font-bold text-pj-blue-dark">${r.name}</span>
-                                <div class="flex text-pj-yellow-main">
-                                    ★★★★★
-                                </div>
-                            </div>
-                            <p class="text-pj-blue-dark/80 text-[11px] leading-relaxed bg-white p-2 rounded-xl border border-pj-pink/20">${r.text}</p>
-                        </div>
-                    </div>
-                `;
-                container.innerHTML += html;
-            });
-        }
-
-        let tempUploadedImage = '';
-
-        async function handleImageUpload(e) {
-            const file = e.target.files[0];
-            if (file) {
-                const url = await uploadFileToCloud(file);
-                if (url) {
-                    tempUploadedImage = url;
-                }
-            }
-        }
-
-        function handleReviewSubmit(e) {
-            e.preventDefault();
-            const name = document.getElementById('review-name').value;
-            const text = document.getElementById('review-text').value;
-            const proofImg = tempUploadedImage || "https://placehold.co/100x100/ffb3c6/ffffff?text=User";
-
-            reviews.push({
-                id: Date.now(),
-                name: name,
-                text: text,
-                proofImg: proofImg,
-                approved: false
-            });
-
-            localStorage.setItem('pj_reviews', JSON.stringify(reviews));
-            alert('ส่งรีวิวเรียบร้อยแล้ว กรุณารอแอดมินอนุมัตินะคะ');
-            closeModal('modal-review-form');
-            e.target.reset();
-            tempUploadedImage = '';
-        }
-
-        let isPlaying = false;
-        function toggleMusic() {
-            const iframe = document.getElementById('bg-music-iframe');
-            const icon = document.getElementById('music-icon');
-            const statusDot = document.getElementById('music-status-dot');
-
-            if (!isPlaying) {
-                iframe.src = "https://www.youtube.com/embed/l-fZh5Maq0k?autoplay=1&enablejsapi=1";
-                isPlaying = true;
-                icon.classList.add('animate-spin-slow');
-                statusDot.classList.remove('bg-gray-400');
-                statusDot.classList.add('bg-green-500');
-            } else {
-                iframe.src = "https://www.youtube.com/embed/l-fZh5Maq0k?enablejsapi=1";
-                isPlaying = false;
-                icon.classList.remove('animate-spin-slow');
-                statusDot.classList.remove('bg-green-500');
-                statusDot.classList.add('bg-gray-400');
-            }
-        }
-
-        function loadAdminData() {
-            renderAdminQueueManage();
-            renderAdminPendingReviews();
-            populateChannelLinksInputs();
-        }
-
         function renderAdminQueueManage() {
             const container = document.getElementById('admin-queue-manage-list');
             if(!container) return;
             container.innerHTML = '';
 
             queues.forEach((q) => {
-                const html = `
-                    <div class="flex items-center gap-2 bg-white p-2 rounded-xl border border-pj-pink/40 text-xs">
-                        <input type="text" value="${q.name}" onchange="updateQueueName(${q.id}, this.value)" class="flex-1 border rounded px-2 py-1 font-bold">
-                        <select onchange="updateQueueStatus(${q.id}, this.value)" class="border rounded px-1 py-1 font-semibold text-pj-blue-dark">
-                            <option value="0" ${q.status == 0 ? 'selected' : ''}>0%</option>
-                            <option value="25" ${q.status == 25 ? 'selected' : ''}>25%</option>
-                            <option value="50" ${q.status == 50 ? 'selected' : ''}>50%</option>
-                            <option value="75" ${q.status == 75 ? 'selected' : ''}>75%</option>
-                            <option value="100" ${q.status == 100 ? 'selected' : ''}>100%</option>
+                const div = document.createElement('div');
+                div.className = "bg-pj-bg p-2.5 rounded-xl border border-pj-pink/30 flex items-center justify-between gap-2 text-xs";
+                div.innerHTML = `
+                    <span class="font-bold text-pj-blue-dark truncate max-w-[150px]">${q.name}</span>
+                    <div class="flex items-center gap-1.5">
+                        <select onchange="updateQueueStatus(${q.id}, this.value)" class="bg-white border border-pj-pink/40 rounded-lg px-1.5 py-1 text-[11px] font-bold">
+                            <option value="0" ${q.status == 0 ? 'selected':''}>0%</option>
+                            <option value="25" ${q.status == 25 ? 'selected':''}>25%</option>
+                            <option value="50" ${q.status == 50 ? 'selected':''}>50%</option>
+                            <option value="75" ${q.status == 75 ? 'selected':''}>75%</option>
+                            <option value="100" ${q.status == 100 ? 'selected':''}>100%</option>
                         </select>
-                        <button onclick="deleteQueueItem(${q.id})" class="bg-red-500 text-white p-1 rounded hover:bg-red-600 transition shrink-0">
-                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg>
+                        <button onclick="deleteQueueItem(${q.id})" class="bg-red-500 text-white p-1 rounded-lg hover:bg-red-600 transition" title="ลบคิว">
+                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg>
                         </button>
                     </div>
                 `;
-                container.innerHTML += html;
+                container.appendChild(div);
             });
         }
 
         function addNewQueueItem() {
             const nameInput = document.getElementById('new-client-name');
-            const statusInput = document.getElementById('new-client-status');
+            const statusSelect = document.getElementById('new-client-status');
 
-            if (!nameInput.value.trim()) return alert('กรุณากรอกชื่อลูกค้าด้วยนะคะ');
+            const name = nameInput.value.trim();
+            const status = parseInt(statusSelect.value);
 
-            queues.unshift({
-                id: Date.now(),
-                name: nameInput.value.trim(),
-                status: parseInt(statusInput.value)
-            });
+            if(!name) {
+                alert('กรุณากรอกชื่อลูกค้าด้วยนะคะ');
+                return;
+            }
 
-            localStorage.setItem('pj_queues', JSON.stringify(queues));
+            const newId = queues.length > 0 ? Math.max(...queues.map(q => q.id)) + 1 : 1;
+            queues.push({ id: newId, name: name, status: status });
+
             nameInput.value = '';
+            saveQueues();
             renderAdminQueueManage();
             renderQueues();
         }
 
-        function updateQueueName(id, newName) {
-            const q = queues.find(item => item.id === id);
-            if (q) {
-                q.name = newName;
-                localStorage.setItem('pj_queues', JSON.stringify(queues));
-                renderQueues();
-            }
-        }
-
         function updateQueueStatus(id, newStatus) {
-            const q = queues.find(item => item.id === id);
-            if (q) {
-                q.status = parseInt(newStatus);
-                localStorage.setItem('pj_queues', JSON.stringify(queues));
+            const target = queues.find(q => q.id === id);
+            if(target) {
+                target.status = parseInt(newStatus);
+                saveQueues();
                 renderQueues();
             }
         }
 
         function deleteQueueItem(id) {
-            if (confirm('ต้องการลบคิวนี้ออกหรือไม่คะ?')) {
-                queues = queues.filter(item => item.id !== id);
-                localStorage.setItem('pj_queues', JSON.stringify(queues));
+            if(confirm('คุณต้องการลบคิวงานนี้ใช่หรือไม่?')) {
+                queues = queues.filter(q => q.id !== id);
+                saveQueues();
                 renderAdminQueueManage();
                 renderQueues();
             }
         }
 
-        function renderAdminPendingReviews() {
-            const container = document.getElementById('admin-pending-reviews-list');
-            if(!container) return;
-            container.innerHTML = '';
+        function saveQueues() {
+            try {
+                localStorage.setItem('pj_queues', JSON.stringify(queues));
+            } catch(e){}
+            pushSharedState();
+        }
 
-            const pending = reviews.filter(r => !r.approved);
+        /* Review Functions */
+        function handleReviewSubmit(e) {
+            e.preventDefault();
+            const name = document.getElementById('review-name').value.trim();
+            const text = document.getElementById('review-text').value.trim();
+            const fileInput = document.getElementById('review-proof-file');
 
-            if (pending.length === 0) {
-                container.innerHTML = `<p class="text-xs text-center text-gray-400 py-2">ไม่มีรีวิวค้างอนุมัติ</p>`;
+            if (!fileInput.files[0]) {
+                alert('กรุณาแนบรูปภาพหลักฐานการซื้อขายด้วยนะคะ');
                 return;
             }
 
-            pending.forEach(r => {
-                const html = `
-                    <div class="bg-white p-3 rounded-xl border border-pj-pink/40 text-xs space-y-2">
-                        <div class="flex justify-between items-start">
-                            <div>
-                                <span class="font-bold text-pj-blue-dark">${r.name}</span>
-                                <p class="text-gray-600 mt-1">${r.text}</p>
-                            </div>
-                            <img src="${r.proofImg}" alt="หลักฐาน" class="w-12 h-12 rounded-lg object-cover border border-pj-pink shrink-0 ml-2" title="คลิกดูรูปเต็ม" onclick="window.open('${r.proofImg}')">
-                        </div>
-                        <div class="flex justify-end gap-2 pt-1 border-t border-gray-100">
-                            <button onclick="approveReview(${r.id})" class="bg-green-500 text-white font-bold px-3 py-1 rounded-lg hover:bg-green-600 transition">
-                                ✓ อนุมัติ
-                            </button>
-                            <button onclick="rejectReview(${r.id})" class="bg-red-500 text-white font-bold px-3 py-1 rounded-lg hover:bg-red-600 transition">
-                                ✕ ปฏิเสธ
-                            </button>
-                        </div>
+            compressAndProcessFile(fileInput.files[0], 300, 300, (imgBase64) => {
+                const newReview = {
+                    id: Date.now(),
+                    name: name,
+                    text: text,
+                    img: imgBase64 || "https://placehold.co/100x100/ffb3c6/ffffff?text=User",
+                    approved: false
+                };
+
+                reviews.push(newReview);
+                try {
+                    localStorage.setItem('pj_reviews', JSON.stringify(reviews));
+                } catch(err){}
+
+                pushSharedState();
+                alert('ส่งรีวิวเรียบร้อยแล้วค่ะ! รอแอดมินอนุมัตินะคะ');
+                closeModal('modal-review-form');
+                e.target.reset();
+            });
+        }
+
+        function renderReviews() {
+            const container = document.getElementById('reviews-display-list');
+            if (!container) return;
+            container.innerHTML = '';
+
+            const approved = reviews.filter(r => r.approved);
+
+            if (approved.length === 0) {
+                container.innerHTML = `<p class="text-xs text-center text-pj-blue-dark/50 py-3">ยังไม่มีรีวิว ร้านเปิดใหม่รอรีวิวจากลูกค้านะคะ 💕</p>`;
+                return;
+            }
+
+            approved.forEach(r => {
+                const div = document.createElement('div');
+                div.className = "bg-pj-bg p-3 rounded-2xl border border-pj-pink/30 flex gap-3 items-center";
+                div.innerHTML = `
+                    <img src="${r.img}" class="w-10 h-10 rounded-full object-cover border border-pj-pink shrink-0">
+                    <div class="text-xs">
+                        <p class="font-bold text-pj-blue-dark">${r.name}</p>
+                        <p class="text-pj-blue-dark/80 mt-0.5">${r.text}</p>
                     </div>
                 `;
-                container.innerHTML += html;
+                container.appendChild(div);
+            });
+        }
+
+        function renderAdminPendingReviews() {
+            const container = document.getElementById('admin-pending-reviews-list');
+            if (!container) return;
+            container.innerHTML = '';
+
+            if (reviews.length === 0) {
+                container.innerHTML = `<p class="text-xs text-center text-gray-400 py-3">ไม่มีรายการรีวิวในระบบ</p>`;
+                return;
+            }
+
+            reviews.forEach(r => {
+                const div = document.createElement('div');
+                div.className = "bg-white p-3 rounded-xl border border-pj-pink/30 flex items-center justify-between gap-2 text-xs";
+                div.innerHTML = `
+                    <div class="flex items-center gap-2 overflow-hidden">
+                        <img src="${r.img}" class="w-8 h-8 rounded-full object-cover shrink-0">
+                        <div class="truncate">
+                            <p class="font-bold text-pj-blue-dark truncate">${r.name} ${r.approved ? '<span class="text-[9px] text-green-600 font-normal">(อนุมัติแล้ว)</span>':''}</p>
+                            <p class="text-[10px] text-gray-500 truncate">${r.text}</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-1 shrink-0">
+                        ${!r.approved ? `<button onclick="approveReview(${r.id})" class="bg-green-500 text-white text-[10px] font-bold px-2 py-1 rounded-lg hover:bg-green-600">อนุมัติ</button>` : ''}
+                        <button onclick="deleteReview(${r.id})" class="bg-red-500 text-white p-1 rounded-lg hover:bg-red-600">
+                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg>
+                        </button>
+                    </div>
+                `;
+                container.appendChild(div);
             });
         }
 
         function approveReview(id) {
-            const r = reviews.find(item => item.id === id);
-            if (r) {
-                r.approved = true;
-                localStorage.setItem('pj_reviews', JSON.stringify(reviews));
+            const rev = reviews.find(r => r.id === id);
+            if (rev) {
+                rev.approved = true;
+                saveReviews();
                 renderAdminPendingReviews();
                 renderReviews();
-                alert('อนุมัติรีวิวเรียบร้อยแล้วค่ะ');
             }
         }
 
-        function rejectReview(id) {
-            if (confirm('ปฏิเสธและลบรีวิวนี้หรือไม่?')) {
-                reviews = reviews.filter(item => item.id !== id);
-                localStorage.setItem('pj_reviews', JSON.stringify(reviews));
+        function deleteReview(id) {
+            if(confirm('คุณต้องการลบรีวิวนี้ใช่หรือไม่?')) {
+                reviews = reviews.filter(r => r.id !== id);
+                saveReviews();
                 renderAdminPendingReviews();
+                renderReviews();
             }
+        }
+
+        function saveReviews() {
+            try {
+                localStorage.setItem('pj_reviews', JSON.stringify(reviews));
+            } catch(e){}
+            pushSharedState();
         }
     </script>
 </body>
